@@ -14,7 +14,11 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 1rem 3rem;
+    }
+
+    @include desktop {
+        padding: 1rem 5rem;
     }
 
     &__details-container {
@@ -100,6 +104,7 @@
     }
 
     &__item-link {
+        cursor: grab;
         font-weight: 700;
         display: flex;
         padding-top: .1875rem;

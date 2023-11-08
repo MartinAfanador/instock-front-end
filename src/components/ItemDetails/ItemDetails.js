@@ -1,14 +1,17 @@
-import backArrow from '../../images/arrow_back_black_24dp.svg';
-import edit from '../../images/edit_black_24dp.svg'
-import './ItemDetails.scss'
+import './ItemDetails.scss';
+import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
+import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
 
 function ItemDetails() {
     return (
         <>
             <div className='item'>{/* container */}
                 <div className='item__header'> {/* header */}
-                    <div className='item__header-name'> <img className='item__logo' src={backArrow}></img>Item Name</div>
-                    <button className='item__header-button'><img className='item__edit' src={edit}></img><div className='item__header-button--tablet'>Edit</div></button>
+                    <div className='item__title-layout'>
+                    <BackArrow className='item__logo' />
+                    <div className='item__header-name'>Item Name</div>
+                    </div>
+                    <div className='item__header-button'><Edit className='item__edit' /><div className='item__header-button--tablet'>Edit</div></div>
                 </div>
 
 

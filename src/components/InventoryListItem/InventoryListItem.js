@@ -39,8 +39,8 @@ function InventoryListItem() {
                 </div>
             </div>
             <div className="inventory-item__buttons-container">
-                <button className="inventory-item__button-delete"><DeleteIcon className='inventory-item__delete-icon' alt='A red trash can on a white background' /></button>
-                <button className="inventory-item__button-edit"><EditIcon className='inventory-item__edit-icon' alt='A blue pencil on a white background' /></button>
+                <button className="inventory-item__button"><DeleteIcon className='inventory-item__delete-icon' alt='A red trash can on a white background' /></button>
+                <button className="inventory-item__button"><EditIcon className='inventory-item__edit-icon' alt='A blue pencil on a white background' /></button>
             </div>
         </div>
     );

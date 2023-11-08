@@ -9,17 +9,36 @@
     flex-direction: column;
     border-bottom: .0625rem solid $cloud;
 
-    &__details-container {
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
+    &__details-container {
         display: flex;
         flex-direction: row;
         margin-bottom: 1rem;
+
+        @include tablet {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 
     &__details-subcontainer {
         width: 50%;
         display: flex;
         flex-direction: column;
+
+        @include tablet {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            //justify-content: space-between;
+        }
     }
 
     &__item-container {
@@ -27,28 +46,48 @@
         flex-direction: column;
         margin-bottom: 1.5rem;
         color: $indigo;
+
+        @include tablet {
+            width: 50%;
+        }
     }
 
     &__category-container {
         display: flex;
         flex-direction: column;
+
+        @include tablet {
+            width: 50%;
+        }
     }
 
     &__status-container {
         display: flex;
         flex-direction: column;
         margin-bottom: 1.5rem;
+
+        @include tablet {
+            width: 50%;
+        }
     }
 
     &__quantity-container {
         display: flex;
         flex-direction: column;
+
+        @include tablet {
+            width: 50%;
+        }
     }
 
     &__label {
         color: $slate;
         font-weight: 700;
         margin-bottom: .3125rem;
+
+        @include tablet {
+            display: none;
+        }
     }
 
     &__text {
@@ -66,28 +105,36 @@
     &__buttons-container {
         display: flex;
         justify-content: space-between;
+
+        @include tablet {
+            width: 20%;
+            justify-content: center;
+        }
     }
 
-    &__button-delete {
+    &__button {
         border: none;
         background-color: $white;
-    }
 
-    &__button-edit {
-        border: none;
-        background-color: $white;
+        @include tablet {
+            height: fit-content;
+        }
     }
 
     &__chevron-icon {
-        fill: $indigo; 
+        fill: $indigo;
     }
 
     &__delete-icon {
-        fill: $red; 
+        fill: $red;
     }
 
     &__edit-icon {
-        fill: $indigo; 
+        fill: $indigo;
+
+        @include tablet {
+            margin-left: 1rem;
+        }
     }
 
     &__in-stock {
@@ -100,6 +147,7 @@
 
     &__out-of-stock {
         background-color: rgba(201, 69, 21, 0.07);
+        padding: .1875rem .9375rem;
         border-radius: $btn-rd;
         color: $red;
         font-weight: 700;

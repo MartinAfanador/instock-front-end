@@ -43,7 +43,7 @@ function ItemDetails() {
 
                                 <div className='item__label'>
                                     Status:
-                                    <div className='item__instock'>IN STOCK</div>
+                                    <div className='item__in-stock'>IN STOCK</div>
                                 </div>
                                 <div className='item__label'>
                                     Warehouse:

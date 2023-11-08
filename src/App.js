@@ -1,5 +1,5 @@
+import './App.scss';
 import ItemDetails from './components/ItemDetails/ItemDetails';
-import './App.css';
 
 function App() {
   return (

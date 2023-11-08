@@ -1,0 +1,80 @@
+// Primary Colors
+$black: #13182C; // ***** Used for Global text color *****
+$indigo: #2E66E5; // ***** Used for Interactive elements *****
+$white: #FFFFFF; // ***** Used for Global white color *****
+
+// Secondary Colors
+$slate: #5C667E; // ***** Used for Table column headers & placeholder text *****
+$cloud: #BDC5D5; // ***** Used for Outlines, dividers, borders, table sorting icon *****
+
+// Background Colors
+$graphite: #232940; // ***** Used for Top navigation header background, CTA button hover state background ******
+$grey: #F7F8F9; // ***** Used for Page background, table column header background, CTA background ******
+
+// Supporting Colors
+$green: #158463; //***** Used for the “In stock” label*****
+$red: #C94515; // ***** Used for the “Out of stock” label, error states & delete icon *****
+
+
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+
+
+// ***********BUTTONS*************************** //
+
+// Height variables ("dt" = desktop /// "mb" = mobile /// "rd" = radius/// "pd" = padding)
+$btn-ht-dt: 2.375rem; // ***** Desktop & tablet button height ******
+$btn-ht-mb: 2.25rem; // ***** Mobile button height *****
+
+// Padding variable
+$btn-pd: 1rem; // ***** Button horizontal padding *****
+
+// Border radius variable
+$btn-rd: 1.25rem; // ***** Button border radius *****
+
+// Spacing variable
+$link-icn-spc: .25rem; // ***** Text link icon spacing *****
+
+
+// ***********FORM FIELDS*************************** //
+
+
+// Height variables
+$ff-ht-dt: 2.375rem; //  *****  Desktop & tablet form field height ***** 
+$ff-ht-mb: 2.25rem; //  *****  Mobile form field height ***** 
+
+// Padding and spacing variables
+$ff-pd: 1rem; //  *****  Form field horizontal padding  ***** 
+$ff-spc: .25rem; //  *****  Spacing between label and form field ***** 
+
+// Border radius variable
+$ff-rd: 1.25rem; //  *****  Form field border radius ***** 
+
+
+// ***********TAGS*************************** //
+
+
+// Tag height variables
+$tag-ht-dt: 1.625rem; //  *****  Desktop & tablet tag height *****     
+$tag-ht-mb: 1.5rem; //   ***** Mobile tag  height ***** 
+
+// Padding variable
+$tag-pd: .5rem; //   ***** Tag horizontal padding ***** 
+
+// Tag background color variables
+$tag-bg-out: rgba(201, 69, 21, 0.07); // ***** Out of Stock tag background color ***** 
+$tag-bg-in: rgba(21, 132, 99, 0.07); // ***** In Stock tag background color  ***** 
+
+// Border radius variable
+$tag-rd: 1.25rem; //  ***** Tag border radius ***** 
+
+
+// ***********SELECTION CONTROLS*************************** //
+
+
+// Spacing variables
+$spc-lbl-rad: .25rem; // ***** Space between label and radio button group *****
+$spc-rad-txt: .5rem; // ***** Space between radio button and text ****

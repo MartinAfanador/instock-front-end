@@ -1,0 +1,10 @@
+@use '../src/partials/globals' as *;
+@use '../src/partials/mixins' as *;
+@use './partials/typography' as *;
+@use '../src/partials/variables' as *;
+
+.app-class {
+
+    @include desk-h1;
+    color: $green;
+}

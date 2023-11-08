@@ -39,7 +39,9 @@
         }
     }
     &__header-button--tablet{
+        display: none;
         @include tablet {
+            display: contents;
             color: $white;
 
         }
@@ -82,19 +84,64 @@
     }
     &__bottom-container {
         padding: $ff-pd;
+        @include tablet {
+            display: flex;
+        }
     }
     &__status-container {
         display: flex;
         justify-content: flex-start;
+        flex-direction: column;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     &__label--quantity {
         margin-left: 3rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: start;
         margin-bottom: 0;
+        @include tablet {
+            margin-left: 5rem;
+        }
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 8rem;
+    }
+    &__container--top {
+        // display: flex;
+        // flex-direction: column;
+    }
+    &__container-bottom {
+        display: flex;
+        flex-direction: row;
+
+
+    }
+    &__container-bottom-left {
+        
+    }
+
+    &__container-tablet1 {
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+            width: 50%;
+            padding-right: 3rem;
+        }
+    }
+    &__container-tablet2 {
+        display: flex;
+        flex-direction: row;
+        @include tablet {
+            border-left: 1px solid black;
+            padding-left: 3rem;
+        }
     }
 }
 

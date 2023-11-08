@@ -1,6 +1,8 @@
+import InventoryListItem from "../../components/InventoryListItem/InventoryListItem";
+
 function CurrentWarehouse() {
     return (
-        <div>Hi from current warehouse</div>
+        <InventoryListItem />
     );
 }
 

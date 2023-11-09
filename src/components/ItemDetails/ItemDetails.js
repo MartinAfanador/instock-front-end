@@ -9,9 +9,9 @@ const backendApiURL = 'http://localhost:8081';
 
 function ItemDetails() {
 
-    const { id }= useParams();
-    const [itemDetails, setItemDetails] = useState(null); 
-
+    const { id } = useParams();
+    const [itemDetails, setItemDetails] = useState(null);
+    const quantity = 500;
     useEffect(() => {
         async function fetchData() {
             console.log(`${backendApiURL}/api/inventories/${id}`);
@@ -30,6 +30,9 @@ function ItemDetails() {
     if (!itemDetails) {
         return <div>Loading!!!</div>
     }
+
+    const isInStock = itemDetails.quantity > 0;
+    const statusText = isInStock ? 'IN STOCK' : 'OUT OF STOCK';
 
     return (
         <div className='item'>{/* container */}
@@ -68,9 +71,12 @@ function ItemDetails() {
                     <div className='item__container-tablet2'>
                         <div className='item__container-bottom-left'>
 
-                            <div className='item__label'>
+                            <div className='item__label ='>
                                 Status:
-                                <div className='item__in-stock'>{itemDetails.status}</div>
+                                {/* <div className='item__in-stock'>{itemDetails.status}</div> */}
+                                <span className={`item__text ${isInStock ? 'item__in-stock' : 'item__out-of-stock'}`}>
+                                    {statusText}
+                                </span>
                             </div>
                             <div className='item__label'>
                                 Warehouse:

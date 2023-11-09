@@ -1,0 +1,171 @@
+@use '../../partials/globals' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/variables' as *;
+
+.item {
+    margin: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: $white;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+
+    &__title-layout {
+        display: flex;
+        align-items: center;
+    }
+
+    &__header {
+        color: $black;
+        display: flex;
+        border-bottom: 1px solid $cloud;
+        justify-content: space-between;
+        @include pad-mob;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+        align-items: center;
+
+    }
+
+    &__header-name {
+        @include desk-h1;
+    }
+
+    &__header-button {
+        background-color: $indigo;
+        border-radius: 100%;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include tablet {
+            width: 5rem;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+    }
+
+    &__header-button--tablet {
+        display: none;
+
+        @include tablet {
+            display: contents;
+            color: $white;
+        }
+    }
+
+    &__edit {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: $white;
+
+        @include tablet {
+            padding-right: .25rem;
+        }
+    }
+
+    &__description-container {
+        display: flex;
+    }
+
+    &__label {
+        color: $slate;
+        margin-bottom: .5rem;
+    }
+
+    &__description {
+        color: $black;
+        margin-bottom: .5rem;
+    }
+
+    &__in-stock {
+        background: rgba(21, 161, 107, 0.07);
+        border-radius: 20px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
+        padding: .75rem;
+        color: $green;
+        font-weight: 600;
+
+    }
+
+    &__logo {
+        width: 2.25rem;
+        height: 2.25rem;
+        padding-right: .5rem;
+        fill: $indigo;
+
+    }
+
+    &__bottom-container {
+        padding: $ff-pd;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__status-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &__label--quantity {
+        margin-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 0;
+
+        @include tablet {
+            margin-left: 5rem;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 8rem;
+    }
+
+
+    &__container-bottom {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__container-tablet1 {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            width: 50%;
+            padding-right: 3rem;
+        }
+    }
+
+    &__container-tablet2 {
+        display: flex;
+        flex-direction: row;
+
+        @include tablet {
+            border-left: 1px solid $cloud;
+            padding-left: 3rem;
+        }
+    }
+}

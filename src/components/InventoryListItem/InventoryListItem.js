@@ -4,23 +4,23 @@ import { ReactComponent as DeleteIcon} from './../../images/delete_black_24dp.sv
 import { ReactComponent as EditIcon}  from './../../images/edit_black_24dp.svg';
 import { ReactComponent as ChevronIcon}  from './../../images/chevron_right_black_24dp.svg';
 
-function InventoryListItem() {
+function InventoryListItem( {item} ) {
 
-    const item = 'Television';
-    const category = 'Electronics';
-    const quantity = 500;
+    const itemName = item.item_name;
+    const category = item.category;
+    const quantity = item.quantity;
+    const warehouse = item.warehouse_name;
+    let statusText = item.status;
     let status = false;
-    let statusText = '';
     quantity ? (status = true) : (status = false);
-    status ? (statusText = 'IN STOCK') : (statusText = 'OUT OF STOCK')
 
     return (
         <div className="inventory-item">
             <div className="inventory-item__details-container">
                 <div className="inventory-item__details-subcontainer">
                     <div className="inventory-item__item-container">
-                        <span className="inventory-item__label">INVENTORY</span>
-                        <span className="inventory-item__text inventory-item__item-link">{item}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span>
+                        <span className="inventory-item__label">INVENTORY ITEM</span>
+                        <span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span>
                     </div>
                     <div className="inventory-item__category-container">
                         <span className="inventory-item__label">CATEGORY</span>
@@ -35,6 +35,10 @@ function InventoryListItem() {
                     <div className="inventory-item__quantity-container">
                         <span className="inventory-item__label">QUANTITY</span>
                         <span className="inventory-item__text">{quantity}</span>
+                    </div>
+                    <div className="inventory-item__warehouse-container">
+                        <span className="inventory-item__label">WAREHOUSE</span>
+                        <span className="inventory-item__text">{warehouse}</span>
                     </div>
                 </div>
             </div>

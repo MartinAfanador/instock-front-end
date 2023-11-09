@@ -1,0 +1,26 @@
+@use '../../partials/globals' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/variables' as *;
+
+
+.delete__warehouse {
+    height: 40%;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgb(222, 227, 227);
+
+    &__container {}
+
+    &__title {
+        @include mob-h1;
+    }
+
+    &__text {}
+
+}

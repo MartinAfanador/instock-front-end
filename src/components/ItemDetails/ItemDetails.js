@@ -102,7 +102,7 @@ function ItemDetails() {
                     </div>
 
                     <div className='item__status-container'> {/* status container */}
-                        <div className='item__container-top'>{/* left container */}
+                        <div className='item__container-top'>
                             <div className='item__label'>
                                 Category:
                                 <div className='item__description'>

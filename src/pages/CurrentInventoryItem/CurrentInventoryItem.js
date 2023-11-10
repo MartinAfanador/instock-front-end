@@ -1,6 +1,8 @@
+import ItemDetails from "../../components/ItemDetails/ItemDetails";
+
 function CurrentInventoryItem() {
     return (
-        <div>Hello from current inventory item</div>
+        <ItemDetails />
     );
 }
 

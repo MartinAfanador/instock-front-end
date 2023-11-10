@@ -77,6 +77,8 @@
     &__label {
         color: $slate;
         margin-bottom: .5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     &__description {
@@ -84,19 +86,19 @@
         margin-bottom: .5rem;
     }
 
-    &__in-stock {
-        background: rgba(21, 161, 107, 0.07);
-        border-radius: 20px;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 24px;
-        padding: .75rem;
-        color: $green;
-        font-weight: 600;
+    // &__in-stock {
+    //     background: rgba(21, 161, 107, 0.07);
+    //     border-radius: 20px;
+    //     width: fit-content;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     height: 24px;
+    //     padding: .75rem;
+    //     color: $green;
+    //     font-weight: 600;
 
-    }
+    // }
 
     &__logo {
         width: 2.25rem;
@@ -168,4 +170,24 @@
             padding-left: 3rem;
         }
     }
+
+    &__text {
+        width: fit-content;
+    }
+    &__in-stock {
+        background-color: rgba(21, 132, 99, 0.07);
+        border-radius: $btn-rd;
+        padding: .1875rem .9375rem;
+        color: $green;
+        font-weight: 700;
+    }
+    &__out-of-stock {
+        background-color: rgba(201, 69, 21, 0.07);
+        padding: .1875rem .9375rem;
+        border-radius: $btn-rd;
+        color: $red;
+        font-weight: 700;
+        display: flex;
+    }
+
 }

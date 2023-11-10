@@ -1,7 +1,9 @@
-function EditWarehouse() {
+import EditWarehouse from '../../components/EditWarehouse/EditWarehouse'
+
+function EditWarehousePage() {
     return (
-        <div>Hi from edit warehouse</div>
+        <EditWarehouse />
     );
 }
 
-export default EditWarehouse;
+export default EditWarehousePage;

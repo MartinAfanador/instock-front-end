@@ -3,27 +3,23 @@ import axios from 'axios';
 import './ItemDetails.scss';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
+import { useParams } from 'react-router-dom';
 
 const backendApiURL = 'http://localhost:8081';
 
 function ItemDetails() {
-    // const [category, setCategory] = useState([]);
-    // const [itemDesc, setItemDesc] = useState([]);
-    // const [warehouse, setWarehouse] = useState([]);
-    // const [quantity, setQuantity] = useState([]);
 
-    const [itemDetails, setItemDetails] = useState({
-        category: '',
-        itemDesc: '',
-        warehouse: '',
-        quantity: 0,
-    });
-
+    const { id } = useParams();
+    const [itemDetails, setItemDetails] = useState(null);
+    const quantity = 500;
     useEffect(() => {
         async function fetchData() {
+            console.log(`${backendApiURL}/api/inventories/${id}`);
             try {
-                const response = await axios.get(`${backendApiURL}/itemDetails??????`);
-                setItemDetails(response.data);
+                console.log(`${backendApiURL}/api/inventories/${id}`);
+                const response = await axios.get(`${backendApiURL}/api/inventories/${id}`);
+                console.log(response.data);
+                setItemDetails(response.data[0]);
             } catch (error) {
                 console.error('Error fetching item details:', error);
             }
@@ -31,60 +27,19 @@ function ItemDetails() {
         fetchData();
     }, []);
 
+    if (!itemDetails) {
+        return <div>Loading!!!</div>
+    }
 
-    // useEffect(() => {
-    //     //CATEGORY DATA 
-    //     async function fetchCategory() {
-    //         try {
-    //             const response = await axios.get(`${backendApiURL}/`);
-    //             setCategory(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching category data:', error);
-    //         }
-    //     }
-    //     fetchCategory();
-
-    //     //ITEM DESCRIPTION DATA 
-    //     async function fetchItemDesc() {
-    //         try {
-    //             const response = await axios.get(`${backendApiURL}/`);
-    //             setItemDesc(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching item description data:', error);
-    //         }
-    //     }
-    //     fetchItemDesc();
-
-    //     //WAREHOUSE DATA 
-    //     async function fetchWarehouse() {
-    //         try {
-    //             const response = await axios.get(`${backendApiURL}/`);
-    //             setWarehouse(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching warehouse data:', error);
-    //         }
-    //     }
-    //     fetchWarehouse();
-
-    //     //QUANTITY DATA
-    //     async function fetchQuantity() {
-    //         try {
-    //             const response = await axios.get(`${backendApiURL}/`);
-    //             setQuantity(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching quantity data:', error);
-    //         }
-    //     }
-    //     fetchQuantity();
-    // }, []);
-
+    const isInStock = itemDetails.quantity > 0;
+    const statusText = isInStock ? 'IN STOCK' : 'OUT OF STOCK';
 
     return (
         <div className='item'>{/* container */}
             <div className='item__header'> {/* header */}
                 <div className='item__title-layout'>
                     <BackArrow className='item__logo' />
-                    <div className='item__header-name'>Item Name</div>
+                    <div className='item__header-name'>{itemDetails.item_name}</div>
                 </div>
                 <div className='item__header-button'><Edit className='item__edit' /><div className='item__header-button--tablet'>Edit</div></div>
             </div>
@@ -96,7 +51,7 @@ function ItemDetails() {
                         <div className='item__label'>
                             Item Description:
                             <div className='item__description'>
-                                {itemDetails.itemDesc}
+                                {itemDetails.description}
                             </div>
                         </div>
                     </div>
@@ -116,14 +71,17 @@ function ItemDetails() {
                     <div className='item__container-tablet2'>
                         <div className='item__container-bottom-left'>
 
-                            <div className='item__label'>
+                            <div className='item__label ='>
                                 Status:
-                                <div className='item__in-stock'>IN STOCK</div>
+                                {/* <div className='item__in-stock'>{itemDetails.status}</div> */}
+                                <span className={`item__text ${isInStock ? 'item__in-stock' : 'item__out-of-stock'}`}>
+                                    {statusText}
+                                </span>
                             </div>
                             <div className='item__label'>
                                 Warehouse:
                                 <div className='item__description'>
-                                    {itemDetails.warehouse}
+                                    {itemDetails.warehouse_name}
                                 </div>
                             </div>
                         </div>

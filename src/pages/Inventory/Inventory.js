@@ -1,6 +1,7 @@
 import './Inventory.scss'
 
 import { ReactComponent as SearchIcon } from './../../images/search_black_24dp.svg';
+import { ReactComponent as UpIcon } from './../../images/unfold_more_black_24dp.svg'
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -30,11 +31,13 @@ function Inventory() {
             <section className='inventories'>
                 <div className='inventories__header-container'>
                     <h1 className='inventories__heading'>Inventory</h1>
-                    <div className='inventories__search-container'>
-                        <input className='inventories__input-field' type='text' placeholder='Search...' name='search' />
-                        <SearchIcon className='inventories__search-icon' />
+                    <div className='inventories__right-subcontainer'>
+                        <div className='inventories__search-container'>
+                            <input className='inventories__input-field' type='text' placeholder='Search...' name='search' />
+                            <SearchIcon className='inventories__search-icon' />
+                        </div>
+                        <button className='inventories__add-button'>+ Add New Item</button>
                     </div>
-                    <button className='inventories__add-button'>+ Add New Item</button>
                 </div>
                 <div className='inventories__inventory-list'>
                     {

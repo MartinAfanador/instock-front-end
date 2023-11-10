@@ -4,9 +4,24 @@
 .inventories {
 
     &__header-container {
+        display: flex;
+        flex-direction: column;
         padding: 2rem;
         padding-bottom: 1.5rem;
         border: .0625rem solid $cloud;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 3rem;
+            padding-bottom: 1.5rem;
+            border: none;
+        }
+    }
+
+    &__right-subcontainer {
+        display: flex;
     }
 
     &__heading {
@@ -16,18 +31,23 @@
 
     &__search-container {
         width: 100%;
-        padding: .3125rem;
+        padding: .3125rem 1rem;
         box-sizing: border-box;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         border: .0625rem solid $cloud;
         border-radius: $btn-rd;
         margin-bottom: 1rem;
+
+        @include tablet {
+            width: 20vw;
+        }
     }
 
     &__input-field {
         width: 90%;
-        padding-left: 1rem;
+        padding-left: 0.625rem;
         padding-right: .625rem;
         border: none;
         outline: none;
@@ -53,10 +73,10 @@
 
         @include tablet {
             height: $btn-ht-dt;
+            width: 20vw;
+            margin-left: 1rem;
         }
     }
 
-    &__inventory-list {
-
-    }
+    &__inventory-list {}
 }

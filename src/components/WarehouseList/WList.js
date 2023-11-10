@@ -7,12 +7,14 @@ import axios from "axios";
 
 function Wlist() {
     const [data, setData] = useState()
+    const [searchData, setSearchData] = useState()
 
     useEffect(() => {
         async function getWareHouseData() {
             try {
                 const response = await axios.get("http://localhost:8086/api/warehouses");
                 setData(response.data);
+                setSearchData(response.data);
                 console.log("response.data ", response.data);
             } catch (error) {
                 console.error(error);
@@ -21,12 +23,14 @@ function Wlist() {
         getWareHouseData();
     }, []);
 
-    if (data) {
-        // const dataNum = [11, 2, 3, 5].map(item => <h1>{item}</h1>);
+    function onSearch(searchText) { }
 
-        const items = data.map(item => {
+    if (data) {
+
+
+        const items = searchData.map(item => {
             return (
-                <form className='warehouse__list'>
+                <form className='warehouse__list' key={item.id}>
 
                     <section className='warehouse__list__section'>
                         <div className='warehouse__list__section-flex'>
@@ -69,11 +73,11 @@ function Wlist() {
 
         return (
             <div className='warehouse__list'>
-                {/* {dataNum} */}
+
                 <section className='warehouse__list__header'>
                     <h1 className='warehouse__list__header-title'>Warehouses</h1>
                     <div className='warehouse__list__header-search'>
-                        <input className='warehouse__list__header-input' placeholder='Search' />
+                        <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
                     </div>
                     <div className='warehouse__list__header-add'>
                         <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>

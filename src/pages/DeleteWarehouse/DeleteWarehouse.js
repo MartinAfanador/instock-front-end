@@ -1,41 +1,16 @@
-import { useParams } from "react-router-dom";
 import "./DeleteWarehouse.scss";
-import axios from "axios";
 import { ReactComponent as Close } from '../../images/close_black_24dp.svg';
 
 
-function DeleteWarehouse({ isOpen, onCancel }) {
+function DeleteWarehouse({ isOpen, onCancel, onConfirmed }) {
 
-    const { id } = useParams();
-
-    function showHome() {
-        window.location.href = '/'
-    }
-
-    function onDeleteModalConfirmed() {
-        if (!id) return;
-
-
-        const itemIdValue = id
-        async function deleteItem() {
-            try {
-                const response = await axios.delete(`http://localhost:8086/api/warehouses/${id}`);
-
-                showHome();
-            } catch (error) {
-                console.error(error);
-                showHome();
-            }
-        }
-        deleteItem();
-    }
     if (!isOpen) return null;
 
     return (
         <div className="delete__background">
             <div className="delete__warehouse">
                 <div className="delete__warehouse-box">
-                    <Close className="delete__warehouse-close" onClick={showHome} />
+                    <Close className="delete__warehouse-close" onClick={onCancel} />
                 </div>
                 <div className="delete__warehouse-container">
                     <h1 className="delete__warehouse-title">Delete Washington warehouse?</h1>
@@ -44,7 +19,7 @@ function DeleteWarehouse({ isOpen, onCancel }) {
                 </div >
                 <div className="delete__warehouse__button__container">
                     <button className='delete__warehouse__button__container-cancel' onClick={onCancel}>Cancel</button>
-                    <button className='delete__warehouse__button__container-delete' onClick={onDeleteModalConfirmed}>Delete</button>
+                    <button className='delete__warehouse__button__container-delete' onClick={onConfirmed}>Delete</button>
                 </div>
 
             </div>

@@ -30,7 +30,7 @@ function Wlist() {
 
     function showDeleteModal(id) {
         itemId.value = id;
-        // setItemIdToDelete(id);
+
         setShouldShowDeleteModal(true);
     }
 

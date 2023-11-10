@@ -3,24 +3,142 @@
 @use '../../partials/typography' as *;
 @use '../../partials/variables' as *;
 
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $graphite-modal;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .delete__warehouse {
-    height: 40%;
+    height: 49%;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    background-color: rgb(222, 227, 227);
+    background-color: $white;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    padding-top: 1rem;
 
-    &__container {}
 
-    &__title {
-        @include mob-h1;
+
+    @include tablet {
+
+        width: 81%;
+        height: 22%;
+        border-radius: .25rem;
+
     }
 
-    &__text {}
+    &-close {
+        justify-content: flex-end;
+        margin-right: 1rem;
+    }
 
+    &-box {
+
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    &-container {
+
+
+        @include pad-mob;
+        height: 85%;
+        width: 100%;
+
+
+        @include tablet {
+            height: 60%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+
+
+        }
+    }
+
+    &-title {
+        @include mob-h1;
+        padding-bottom: 1rem;
+
+        @include tablet {
+            @include desk-h1
+        }
+    }
+
+    &-text {
+        @include mob-p2;
+
+        @include tablet {
+            @include desk-p2
+        }
+    }
+
+
+    &__button__container {
+        @include pad-mob;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        // width: 100%;
+
+
+        @include tablet {
+            justify-content: flex-end;
+            padding-left: 3rem;
+            padding-right: 3rem;
+
+
+
+        }
+
+        &-cancel {
+            color: $slate;
+            width: 8.5rem;
+            background-color: $white;
+            border: 1px solid $cloud;
+            @include button-mob;
+            @include mob-h3;
+
+            @include tablet {
+
+                @include desk-h3;
+                width: 4.5rem;
+
+            }
+        }
+
+        &-delete {
+            color: $white;
+            background-color: $red;
+            border: none;
+            width: 8.5rem;
+            @include button-mob;
+            @include mob-h3;
+            margin-left: 1rem;
+
+            @include tablet {
+
+                @include desk-h3;
+                width: 4.5rem;
+                margin-left: 1rem;
+            }
+
+        }
+    }
 }

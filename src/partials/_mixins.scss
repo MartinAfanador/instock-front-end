@@ -130,3 +130,13 @@
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
+// BUTTON  ***************************
+
+@mixin button-mob {
+
+    padding-left: $btn-pd;
+    padding-right: $btn-pd;
+    height: $btn-ht-mb;
+    border-radius: $btn-rd;
+}

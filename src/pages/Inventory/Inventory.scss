@@ -66,6 +66,7 @@
         background-color: $indigo;
         color: $white;
         font-weight: 700;
+        cursor: grab;
 
         &:hover {
             background-color: $graphite;
@@ -73,10 +74,69 @@
 
         @include tablet {
             height: $btn-ht-dt;
-            width: 20vw;
+            padding: 0 2rem;
+            width: max-content;
             margin-left: 1rem;
         }
     }
 
-    &__inventory-list {}
+    &__inventory-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__labels-container {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    &__details-container {
+
+    }
+
+    &__left-subcontainer {
+
+    }
+
+    &__right-subcontainer {
+
+    }
+
+    &__item-container {
+
+    }
+
+    &__category-container {
+
+    }
+
+    &__status-container {
+
+    }
+
+    &__quantity-container {
+
+    }
+
+    &__warehouse-container {
+
+    }
+
+    &__buttons-container {
+
+    }
+
+    &__label {
+
+    }
+
+    &__unfold-logo {
+
+    }
 }

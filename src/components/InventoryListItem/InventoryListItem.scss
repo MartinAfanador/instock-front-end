@@ -167,10 +167,12 @@
 
     &__delete-icon {
         fill: $red;
+        cursor: grab;
     }
 
     &__edit-icon {
         fill: $indigo;
+        cursor: grab;
 
         @include tablet {
             margin-left: 1rem;

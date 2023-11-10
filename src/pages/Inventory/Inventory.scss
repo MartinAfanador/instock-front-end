@@ -49,7 +49,9 @@
             background-color: $graphite;
         }
 
-        
+        @include tablet {
+            height: $btn-ht-dt;
+        }
     }
 
     &__inventory-list {

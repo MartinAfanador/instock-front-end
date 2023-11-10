@@ -61,10 +61,7 @@
 
         @include pad-mob;
 
-        &-flex {
-
-            // display: flex;
-        }
+        &-flex {}
 
 
         &-container {
@@ -73,6 +70,8 @@
             width: 100%;
 
         }
+
+        &-label {}
 
     }
 

@@ -18,6 +18,11 @@
             padding-bottom: 1.5rem;
             border: none;
         }
+
+        @include desktop {
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
     }
 
     &__heading-subcontainer {
@@ -57,6 +62,10 @@
         padding-right: .625rem;
         border: none;
         outline: none;
+
+        &::placeholder {
+            color: $slate;
+        }
     }
 
     &__search-icon {
@@ -97,14 +106,14 @@
         @include tablet {
             display: flex;
             flex-direction: row;
+            background-color: $grey;
             width: 100%;
-            padding-left: 3rem;
-            padding-right: 3rem;
+            padding: 1rem 3rem;
+            color: $slate;
         }
 
         @include desktop {
-            padding-left: 5rem;
-            padding-right: 5rem;
+            padding: 1rem 5rem;
         }
     }
 
@@ -164,7 +173,12 @@
         justify-content: center;
     }
 
-    &__label {}
+    &__label {
+        font-weight: 700;
+    }
 
-    &__unfold-logo {}
+    &__unfold-logo {
+        margin-left: 0.3rem;
+        fill: $slate;
+    }
 }

@@ -11,7 +11,6 @@ function ItemDetails() {
 
     const { id } = useParams();
     const [itemDetails, setItemDetails] = useState(null);
-    const quantity = 500;
     useEffect(() => {
         async function fetchData() {
             console.log(`${backendApiURL}/api/inventories/${id}`);

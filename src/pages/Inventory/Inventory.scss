@@ -1,0 +1,184 @@
+@use './../../partials/mixins' as *;
+@use './../../partials/variables' as *;
+
+.inventories {
+
+    &__header-container {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        padding-bottom: 1.5rem;
+        border: .0625rem solid $cloud;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 3rem;
+            padding-bottom: 1.5rem;
+            border: none;
+        }
+
+        @include desktop {
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+    }
+
+    &__heading-subcontainer {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &__heading {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    &__search-container {
+        width: 100%;
+        padding: .3125rem 1rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: .0625rem solid $cloud;
+        border-radius: $btn-rd;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            width: 20vw;
+        }
+    }
+
+    &__input-field {
+        width: 90%;
+        padding-left: 0.625rem;
+        padding-right: .625rem;
+        border: none;
+        outline: none;
+
+        &::placeholder {
+            color: $slate;
+        }
+    }
+
+    &__search-icon {
+        fill: $slate;
+    }
+
+    &__add-button {
+        width: 100%;
+        height: $btn-ht-mb;
+        padding: .3125rem;
+        border: .0625rem solid $cloud;
+        border-radius: $btn-rd;
+        background-color: $indigo;
+        color: $white;
+        font-weight: 700;
+        cursor: grab;
+
+        &:hover {
+            background-color: $graphite;
+        }
+
+        @include tablet {
+            height: $btn-ht-dt;
+            padding: 0 2rem;
+            width: max-content;
+            margin-left: 1rem;
+        }
+    }
+
+    &__inventory-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__labels-container {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            background-color: $grey;
+            width: 100%;
+            padding: 1rem 3rem;
+            color: $slate;
+        }
+
+        @include desktop {
+            padding: 1rem 5rem;
+        }
+    }
+
+    &__details-container {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+    }
+
+    &__left-subcontainer {
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+    }
+
+    &__right-subcontainer {
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+    }
+
+    &__item-container {
+        display: flex;
+        flex-direction: row;
+        padding-left: .3125rem;
+        width: 60%;
+    }
+
+    &__category-container {
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+    }
+
+    &__status-container {
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        padding-left: 1rem;
+    }
+
+    &__quantity-container {
+        display: flex;
+        flex-direction: row;
+        width: 20%;
+    }
+
+    &__warehouse-container {
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+    }
+
+    &__buttons-container {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__label {
+        font-weight: 700;
+    }
+
+    &__unfold-logo {
+        margin-left: 0.3rem;
+        fill: $slate;
+    }
+}

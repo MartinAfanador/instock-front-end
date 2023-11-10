@@ -20,8 +20,14 @@
         }
     }
 
-    &__right-subcontainer {
+    &__heading-subcontainer {
         display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     &__heading {
@@ -91,52 +97,74 @@
         @include tablet {
             display: flex;
             flex-direction: row;
+            width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
+        }
+
+        @include desktop {
+            padding-left: 5rem;
+            padding-right: 5rem;
         }
     }
 
     &__details-container {
-
+        display: flex;
+        flex-direction: row;
+        width: 90%;
     }
 
     &__left-subcontainer {
-
+        display: flex;
+        flex-direction: row;
+        width: 40%;
     }
 
     &__right-subcontainer {
-
+        display: flex;
+        flex-direction: row;
+        width: 60%;
     }
 
     &__item-container {
-
+        display: flex;
+        flex-direction: row;
+        padding-left: .3125rem;
+        width: 60%;
     }
 
     &__category-container {
-
+        display: flex;
+        flex-direction: row;
+        width: 40%;
     }
 
     &__status-container {
-
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        padding-left: 1rem;
     }
 
     &__quantity-container {
-
+        display: flex;
+        flex-direction: row;
+        width: 20%;
     }
 
     &__warehouse-container {
-
+        display: flex;
+        flex-direction: row;
+        width: 40%;
     }
 
     &__buttons-container {
-
+        width: 10%;
+        display: flex;
+        justify-content: center;
     }
 
-    &__label {
+    &__label {}
 
-    }
-
-    &__unfold-logo {
-
-    }
+    &__unfold-logo {}
 }

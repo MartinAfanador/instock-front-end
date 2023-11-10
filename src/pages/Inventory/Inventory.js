@@ -32,7 +32,7 @@ function Inventory() {
             <section className='inventories'>
                 <div className='inventories__header-container'>
                     <h1 className='inventories__heading'>Inventory</h1>
-                    <div className='inventories__right-subcontainer'>
+                    <div className='inventories__heading-subcontainer'>
                         <div className='inventories__search-container'>
                             <input className='inventories__input-field' type='text' placeholder='Search...' name='search' />
                             <SearchIcon className='inventories__search-icon' />

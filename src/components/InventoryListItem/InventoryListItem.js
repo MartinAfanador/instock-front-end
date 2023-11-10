@@ -17,7 +17,7 @@ function InventoryListItem( {item} ) {
     return (
         <div className="inventory-item">
             <div className="inventory-item__details-container">
-                <div className="inventory-item__details-subcontainer">
+                <div className="inventory-item__details-subcontainer inventory-item__left-subcontainer">
                     <div className="inventory-item__item-container">
                         <span className="inventory-item__label">INVENTORY ITEM</span>
                         <span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span>
@@ -27,7 +27,7 @@ function InventoryListItem( {item} ) {
                         <span className="inventory-item__text">{category}</span>
                     </div>
                 </div>
-                <div className="inventory-item__details-subcontainer">
+                <div className="inventory-item__details-subcontainer inventory-item__right-subcontainer">
                     <div className="inventory-item__status-container">
                         <span className="inventory-item__label">STATUS</span>
                         <span className={`inventory-item__text ${(status) ? ('inventory-item__in-stock') : ('inventory-item__out-of-stock')}`} >{statusText}</span>

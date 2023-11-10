@@ -1,0 +1,88 @@
+@use '../../partials/globals' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/variables' as *;
+
+.warehouse__list {
+
+
+    background-color: $white;
+
+
+
+    &__header {
+        border-bottom: 1px solid $cloud;
+        @include pad-mob;
+
+
+        &-title {
+            @include mob-h1;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+
+
+
+        }
+
+        &-search {}
+
+        &-input {
+
+            border: 1px solid $cloud ;
+            padding: $ff-pd;
+            border-radius: $ff-rd;
+            height: $ff-ht-dt;
+            width: 100%;
+
+            &::placeholder {
+                color: $graphite;
+
+            }
+        }
+
+        &-add-button {
+
+            border-radius: $ff-rd;
+            border: none;
+            height: $ff-ht-dt;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            background-color: $indigo;
+            color: $white;
+            @include desk-h3;
+
+        }
+    }
+
+    &__section {
+        display: flex;
+        justify-content: space-between;
+
+        @include pad-mob;
+
+        &-flex {
+
+            // display: flex;
+        }
+
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+        }
+
+    }
+
+    &__actions {
+        @include pad-mob;
+        padding-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $cloud;
+
+
+    }
+}

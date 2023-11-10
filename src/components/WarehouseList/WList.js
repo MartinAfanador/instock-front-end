@@ -6,8 +6,11 @@ import axios from "axios";
 
 
 function Wlist() {
-    const [data, setData] = useState()
-    const [searchData, setSearchData] = useState()
+    const [data, setData] = useState([])
+    const [searchData, setSearchData] = useState([])
+
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
         async function getWareHouseData() {
@@ -21,17 +24,25 @@ function Wlist() {
             }
         }
         getWareHouseData();
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        // Set up event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Clean up event listener
+        return () => window.removeEventListener('resize', handleResize);
+
     }, []);
+
+    function showDeleteModal(itemId) { }
 
     function onSearch(searchText) { }
 
-    if (data) {
-
-
-        const items = searchData.map(item => {
-            return (
-                <form className='warehouse__list' key={item.id}>
-
+    if (data.length > 0) {
+        if (isMobile) {
+            const items = searchData.map(item => (
+                <div key={item.id} className='warehouse__list'>
                     <section className='warehouse__list__section'>
                         <div className='warehouse__list__section-flex'>
                             <div className='warehouse__list__section-container'>
@@ -57,39 +68,39 @@ function Wlist() {
                                 <div className='warehouse__list__contact-info-email'>{item.contact_email}</div>
                             </div>
                         </div>
-
                     </section>
 
                     <section>
-
                         <div className='warehouse__list__actions'>
-                            <Delete className='warehouse__list__actions-delete' />
+                            <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item.id)} />
                             <Edit className='warehouse__list__actions-edit' />
                         </div>
                     </section>
-                </form>
+                </div>
+            ));
+
+            return (
+                <div className='warehouse__list'>
+                    <section className='warehouse__list__header'>
+                        <h1 className='warehouse__list__header-title'>Warehouses</h1>
+                        <div className='warehouse__list__header-search'>
+                            <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
+                        </div>
+                        <div className='warehouse__list__header-add'>
+                            <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>
+                        </div>
+                    </section>
+                    {items}
+                </div>
             );
-        });
-
-        return (
-            <div className='warehouse__list'>
-
-                <section className='warehouse__list__header'>
-                    <h1 className='warehouse__list__header-title'>Warehouses</h1>
-                    <div className='warehouse__list__header-search'>
-                        <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
-                    </div>
-                    <div className='warehouse__list__header-add'>
-                        <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>
-                    </div>
-                </section>
-                {items}
-            </div>
-        );
+        } else {
+            return (<div>Desktop view</div>);
+        }
     } else {
-        return <div> NO data</div>
+        return <div>No data</div>;
     }
 
-};
+    // return content;
+}
 
-export default Wlist
+export default Wlist;

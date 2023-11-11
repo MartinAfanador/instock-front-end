@@ -2,6 +2,7 @@ import './Header.scss';
 import Logo from '../../images/logo/InStock-Logo_1x.png';
 import { NavLink } from 'react-router-dom';
 
+
 function Header() {
 
     return (

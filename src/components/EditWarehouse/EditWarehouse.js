@@ -1,9 +1,12 @@
 import "./EditWarehouse.scss";
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
-import { useState } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function EditWarehouse() {
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [warehouseDetails, setWarehouseDetails] = useState({
         warehouseName: '',
         streetAddress: '',
@@ -50,11 +53,12 @@ function EditWarehouse() {
         <>
             <section>
                 <div className="warehouse__title">
-                    <BackArrow className='inventory-item__edit-icon' alt='A blue arrow on a white background' />
+                    <BackArrow className='inventory-item__edit-icon' alt='A blue arrow on a white background' onClick={() => navigate('/')}/>
                     <h1 className="warehouse__title-text">Edit Warehouse</h1>
                 </div>
                 <div className="warehouse">
-                    <form noValidate onSubmit={handleUpload}>
+                    <form noValidate onSubmit={handleUpload} >
+                        <section className="warehouse__layout"> 
                         <div className="warehouse__form1">
                             <h3 className="warehouse__h3">Warehouse Details</h3>
                             <label className="warehouse__labels" for="warehouseName">
@@ -141,6 +145,7 @@ function EditWarehouse() {
                                 />
                             </label>
                         </div>
+                        </section>
                         <section className="btn">
                             <button className="btn__white">Cancel</button>
                             <button type="submit" className="btn__indigo"> Save</button>

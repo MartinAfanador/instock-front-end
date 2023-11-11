@@ -10,7 +10,7 @@ function Header() {
                 <img src={Logo} alt="Logo" className='header__logo' />
                 <div className='header__button-layout'>
                     <NavLink to='/' className={({ isActive }) => isActive ? "header__button header__button--active" : "header__button header__button--warehouses"}>Warehouses</NavLink>
-                    <NavLink to='/inventories' className={({ isActive }) => isActive ? "header__button header__button--active" : "header__button header__button--inventory"}> Inventory</NavLink>
+                    <NavLink to='/inventory' className={({ isActive }) => isActive ? "header__button header__button--active" : "header__button header__button--inventory"}> Inventory</NavLink>
                 </div>
             </div>
         </section>

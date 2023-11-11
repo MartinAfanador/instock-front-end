@@ -11,10 +11,12 @@ import CurrentInventoryItem from './pages/CurrentInventoryItem/CurrentInventoryI
 import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 import DeleteInventoryItem from './pages/DeleteInventoryItem/DeleteInventoryItem';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/add-warehouse' element={<AddWarehouse />} />

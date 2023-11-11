@@ -1,0 +1,73 @@
+@use '../../partials/globals' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/variables' as *;
+
+.header {
+    background-color: $graphite;
+    height: 12rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 700;
+
+    &__layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__logo {
+        width: 8rem;
+        height: auto;
+    }
+
+    &__button-layout {
+        display: flex;
+        padding-top: 1rem;
+        align-items: center;
+        width: 90vw;
+        justify-content: space-around;
+        @include tablet {
+            padding-top: 0;
+            width: 16rem;
+        }
+    }
+
+    &__button {
+        color: $white;
+        width: 10rem;
+        display: flex;
+        justify-content: center;    
+    }
+
+    &__button--inventory {
+        @include tablet {
+            margin-left: 1rem;
+        }
+        
+    }
+
+    &__button--warehouses {
+        @include tablet {
+            margin-right: 1rem;
+        }
+    }
+
+    &__button:hover {
+        text-decoration: underline;
+    }
+    &__button--active {
+        border-radius: 20px;
+        background-color: $black;
+        display: flex;
+        justify-content: center;
+        padding: .35rem .25rem;
+        border: 0;
+    }
+}

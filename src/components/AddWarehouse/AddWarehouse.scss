@@ -19,9 +19,9 @@
             font-size: 1.75rem;
         }
     }
-    &-image {
-        padding: 0 1rem;
-    }
+   &-icon {
+    fill:$indigo ;
+   }
 }
 .warehouse {
     display: flex;
@@ -90,6 +90,7 @@
     &__error-icon {
         height: 2.5vh;
         max-height: 1rem;
+        fill: $red;
     }
 }
 .error-message.first-render {

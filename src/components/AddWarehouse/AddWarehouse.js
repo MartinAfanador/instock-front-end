@@ -1,11 +1,14 @@
 import "./AddWarehouse.scss";
 // import arrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as ErrorIcon } from '../../images/error_black_24dp.svg';
 import axios from 'axios';
 
 function AddWarehouse() {
+  const navigate = useNavigate();
+
   const [firstRender, setFirstRender] = useState(true);
   const [warehouseName, setWarehouseName] = useState(null);
   const [address, setAddress] = useState(null);
@@ -16,6 +19,16 @@ function AddWarehouse() {
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [email, setEmail] = useState(null);
   const errorMessage = "This field is required";
+
+  const validatePhoneNumber = (number) => {
+    const validFormat = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    return validFormat.test(number);
+  }
+
+  const validateEmail = (email) => {
+    const validFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return validFormat.test(email);
+  }
   
   const handleWarehouseName = (event) => {
     setWarehouseName(event.target.value);
@@ -41,10 +54,27 @@ function AddWarehouse() {
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
+  
   const handleSubmit = async () => {
+    
     setFirstRender(false);
+
+    if (!warehouseName || !address || !city || !country || !contact || !position || !phoneNumber || !email) {
+      return;
+    }
+
+    if (!validatePhoneNumber(phoneNumber)) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email');
+      return;
+    }
+
     try {
-      const response = await axios.post('/api/warehouses', {
+      const newEntry = {
         warehouse_name: warehouseName,
         address,
         city,
@@ -52,13 +82,14 @@ function AddWarehouse() {
         contact_name: contact,
         contact_position: position,
         contact_phone: phoneNumber,
-        contact_email: email,
-      });
+        contact_email: email
+      }
 
-    //   console.log('Warehouse added successfully:', response.data);
+      const response = await axios.post('http://localhost:8080/api/warehouses', newEntry);
 
-
-      
+      alert('Warehouse added!')
+      navigate('/');
+     
     } catch (error) {
       if (error.response) {
         console.error('Error from the server:', error.response.data);

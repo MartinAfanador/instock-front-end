@@ -172,8 +172,8 @@ function EditWarehouse() {
                         </div>
                         </section>
                         <section className="btn">
-                            <button className="btn__white" type="button" onClick={onCancel}>Cancel</button>
-                            <button type="submit" className="btn__indigo"> Save</button>
+                            <button className="edit-btn__white" type="button" onClick={onCancel}>Cancel</button>
+                            <button type="submit" className="edit-btn__indigo"> Save</button>
                         </section>
                     </form>
                 </div>

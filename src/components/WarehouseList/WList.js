@@ -57,7 +57,7 @@ function Wlist() {
     useEffect(() => {
         async function getWareHouseData() {
             try {
-                const response = await axios.get("http://localhost:8086/api/warehouses");
+                const response = await axios.get("http://localhost:8081/api/warehouses");
                 setData(response.data);
                 setSearchData(response.data);
             } catch (error) {

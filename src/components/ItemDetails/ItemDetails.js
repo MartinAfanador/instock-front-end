@@ -3,12 +3,12 @@ import axios from 'axios';
 import './ItemDetails.scss';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const backendApiURL = 'http://localhost:8081';
 
 function ItemDetails() {
-
+    const navigate = useNavigate();
     const { id } = useParams();
     const [itemDetails, setItemDetails] = useState(null);
     useEffect(() => {
@@ -34,10 +34,12 @@ function ItemDetails() {
     const statusText = isInStock ? 'IN STOCK' : 'OUT OF STOCK';
 
     return (
+        <div className='container'> 
+        <div className='blue-background'></div>
         <div className='item'>{/* container */}
             <div className='item__header'> {/* header */}
                 <div className='item__title-layout'>
-                    <BackArrow className='item__logo' />
+                    <BackArrow className='item__logo' onClick={() => navigate('/inventory')} />
                     <div className='item__header-name'>{itemDetails.item_name}</div>
                 </div>
                 <div className='item__header-button'><Edit className='item__edit' /><div className='item__header-button--tablet'>Edit</div></div>
@@ -93,6 +95,7 @@ function ItemDetails() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

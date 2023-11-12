@@ -1,0 +1,14 @@
+@use './../../partials/mixins' as *;
+@use './../../partials/variables' as *;
+
+
+.Footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    color: $slate;
+
+    @include tablet {
+        padding-top: 4rem;
+    }
+}

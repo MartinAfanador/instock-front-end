@@ -1,15 +1,17 @@
 import "./EditWarehouse.scss";
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
 import axios from 'axios';
 
 function EditWarehouse() {
     const { id } = useParams();
+    const nav = useNavigate();
+    const backendApiURL = 'http://localhost:8081';
     const navigate = useNavigate();
     const [warehouseDetails, setWarehouseDetails] = useState({
-        warehouseName: '',
-        streetAddress: '',
+        warehouse_name: '',
+        address: '',
         city: '',
         country: '',
         contactName: '',
@@ -19,10 +21,25 @@ function EditWarehouse() {
     });
 
 
+    useEffect(() => {
+        async function fetchData() {
+            // console.log(`${backendApiURL}/api/warehouses/${id}`);
+            try {
+                // console.log(`${backendApiURL}/api/warehouses/${id}`);
+                const response = await axios.get(`${backendApiURL}/api/warehouses/${id}`);
+                console.log(response.data);
+                setWarehouseDetails(response.data);
+            } catch (error) {
+                console.error('Error fetching item details:', error);
+            }
+        }
+        fetchData();
+    }, []);
+
     const handleUpload = (e) => {
         e.preventDefault();
-        const warehouseName = e.target.warehouseName.value;
-        const streetAddress = e.target.streetAddress.value;
+        const warehouse_name = e.target.warehouseName.value;
+        const address = e.target.streetAddress.value;
         const city = e.target.city.value;
         const country = e.target.country.value;
         const contactName = e.target.contactName.value;
@@ -31,8 +48,8 @@ function EditWarehouse() {
         const email = e.target.email.value;
 
         const editFormat = {
-            warehouseName,
-            streetAddress,
+            warehouse_name,
+            address,
             city,
             country,
             contactName,
@@ -42,11 +59,17 @@ function EditWarehouse() {
         }
 
         async function edit() {
-            const response = await axios.put(`http://localhost:8081/edit-warehouse/:id`, editFormat);
+            // console.log("edit called ");
+            const response = await axios.put(`http://localhost:8086/edit-warehouse/:id`, editFormat);
         }
         edit();
 
     };
+
+    function onCancel() {
+        nav(-1);
+    }
+
 
 
     return (
@@ -69,6 +92,7 @@ function EditWarehouse() {
                                     id="warehouseName"
                                     name="warehouseName"
                                     placeholder="Warehouse Name"
+                                    value={warehouseDetails.warehouse_name}
                                 />
                             </label>
                             <label className="warehouse__labels" for="streetAddress">
@@ -79,6 +103,7 @@ function EditWarehouse() {
                                     id="streetAddress"
                                     name="streetAddress"
                                     placeholder="Street Address"
+                                    value={warehouseDetails.address}
                                 />
                             </label>
                             <label className="warehouse__labels" for="city">
@@ -147,12 +172,12 @@ function EditWarehouse() {
                         </div>
                         </section>
                         <section className="btn">
-                            <button className="btn__white">Cancel</button>
+                            <button className="btn__white" type="button" onClick={onCancel}>Cancel</button>
                             <button type="submit" className="btn__indigo"> Save</button>
                         </section>
                     </form>
                 </div>
-            </section>
+            </section >
         </>
     );
 }

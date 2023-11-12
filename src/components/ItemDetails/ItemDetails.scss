@@ -191,3 +191,18 @@
     }
 
 }
+
+.blue-background {
+    background-color: $graphite;
+    height: 3rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.item {
+    position: relative;
+    z-index: 2;
+    margin-top: -3rem; 
+}
+

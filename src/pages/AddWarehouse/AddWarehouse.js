@@ -1,7 +1,9 @@
-function AddWarehouse() {
+import AddWarehouse from "../../components/AddWarehouse/AddWarehouse";
+
+function AddWarehousePage() {
     return (
-        <div>Hello from add warehouse</div>
+        <AddWarehouse />
     );
 }
 
-export default AddWarehouse;
+export default AddWarehousePage;

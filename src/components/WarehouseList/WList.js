@@ -3,6 +3,7 @@ import { ReactComponent as Delete } from '../../images/delete_black_24dp.svg';
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
 import { ReactComponent as Unfold } from '../../images/unfold_more_black_24dp.svg';
 import { ReactComponent as RightArrow } from '../../images/chevron_right_black_24dp.svg';
+import { ReactComponent as Search } from '../../images/search_black_24dp.svg';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -104,7 +105,7 @@ function Wlist() {
                             </div>
                         </div>
 
-                        <div className='warehouse__list__section-flex'>
+                        <div className='warehouse__list__section-flex-two'>
                             <div className='warehouse__list__section-container'>
                                 <div className='warehouse__list__section-label'>CONTACT NAME</div>
                                 <div className='warehouse__list__section-value'>{item.contact_name}</div>
@@ -112,8 +113,8 @@ function Wlist() {
 
                             <div className='warehouse__list__section-container'>
                                 <div className='warehouse__list__section-label'>CONTACT INFORMATION</div>
-                                <div className='warehouse__list__contact-info-phone'>{item.contact_phone}</div>
-                                <div className='warehouse__list__contact-info-email'>{item.contact_email}</div>
+                                <div className='warehouse__list__section-phone'>{item.contact_phone}</div>
+                                <div className='warehouse__list__section-email'>{item.contact_email}</div>
                             </div>
                         </div>
                     </section>
@@ -135,6 +136,9 @@ function Wlist() {
                         <h1 className='warehouse__list__header-title'>Warehouses</h1>
                         <div className='warehouse__list__header-search'>
                             <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
+                            <div className='warehouse__list__header-container'>
+                                <Search className="warehouse__list__header-icon" />
+                            </div>
                         </div>
                         <div className='warehouse__list__header-add'>
                             <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>

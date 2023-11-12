@@ -24,7 +24,20 @@
 
         }
 
-        &-search {}
+        &-search {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+
+            &:focus {
+
+                border-color: $indigo;
+                outline: none;
+                ;
+            }
+        }
+
 
         &-input {
 
@@ -33,12 +46,36 @@
             border-radius: $ff-rd;
             height: $ff-ht-dt;
             width: 100%;
+            flex-grow: 1;
+            padding-right: 1.875rem;
+
+
 
             &::placeholder {
                 color: $graphite;
 
             }
         }
+
+        &-container {
+
+            position: absolute;
+            right: .625rem;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        &-icon {
+            fill: $slate;
+            margin-left: -1.6875rem;
+
+            z-index: 10;
+        }
+
+
+
 
         &-add-button {
 
@@ -58,20 +95,58 @@
     &__section {
         display: flex;
         justify-content: space-between;
+        width: 100%;
 
         @include pad-mob;
 
-        &-flex {}
+
+
+        &-flex {
+            width: 50%;
+
+            &-two {
+
+
+                width: 50%;
+
+
+            }
+
+        }
 
 
         &-container {
             display: flex;
             flex-direction: column;
             width: 100%;
+            padding-top: 1rem;
 
         }
 
-        &-label {}
+        &-label {
+
+            @include mob-h4;
+            color: $slate;
+
+        }
+
+        &-value {
+
+            @include mob-p2;
+            color: $black;
+        }
+
+
+        &-phone {
+            @include mob-p2;
+
+        }
+
+        &-email {
+            @include mob-p2;
+
+
+        }
 
     }
 
@@ -81,7 +156,18 @@
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid $cloud;
+        padding-top: 1rem;
 
+        &-delete {
+
+            fill: $red;
+        }
+
+        &-edit {
+
+            fill: $indigo;
+
+        }
 
     }
 }

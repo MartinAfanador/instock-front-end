@@ -11,7 +11,11 @@ import CurrentInventoryItem from './pages/CurrentInventoryItem/CurrentInventoryI
 import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 import DeleteInventoryItem from './pages/DeleteInventoryItem/DeleteInventoryItem';
+
 import Header from './components/Header/Header';
+
+import Footer from './components/Footer/Footer';
+
 
 function App() {
   return (
@@ -28,6 +32,7 @@ function App() {
         <Route path='/delete-inventory-item/:id' element={<DeleteInventoryItem />} />
         <Route path='/edit-inventory-item/:id' element={<EditInventoryItem />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -13,8 +13,8 @@ function DeleteInventoryItem({ name, isOpen, onCancel, onConfirmed }) {
                     <Close className="delete__warehouse-close" onClick={onCancel} />
                 </div>
                 <div className="delete__warehouse-container">
-                    <h1 className="delete__warehouse-title">Delete {name} warehouse?</h1>
-                    <p className="delete__warehouse-text">Please confirm that you’d like to delete the {name} from the list of warehouses. You won’t be able to undo this action.</p>
+                    <h1 className="delete__warehouse-title">Delete {name} inventory item?</h1>
+                    <p className="delete__warehouse-text">Please confirm that you’d like to delete {name} from the inventory list. You won’t be able to undo this action.</p>
 
                 </div >
                 <div className="delete__warehouse__button__container">

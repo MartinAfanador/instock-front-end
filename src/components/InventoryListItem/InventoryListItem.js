@@ -20,7 +20,7 @@ function InventoryListItem( {item} ) {
                 <div className="inventory-item__details-subcontainer inventory-item__left-subcontainer">
                     <div className="inventory-item__item-container">
                         <span className="inventory-item__label">INVENTORY ITEM</span>
-                        <Link to={`/inventory/${id}`}><span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span></Link>
+                        <Link className='inventory-item__link' to={`/inventory/${id}`}><span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span></Link>
                     </div>
                     <div className="inventory-item__category-container">
                         <span className="inventory-item__label">CATEGORY</span>

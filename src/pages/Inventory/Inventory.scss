@@ -38,6 +38,11 @@
     &__heading {
         width: 100%;
         margin-bottom: 1rem;
+        @include mob-h1;
+
+        @include tablet {
+            @include desk-h1;
+        }
     }
 
     &__search-container {
@@ -80,8 +85,8 @@
         border-radius: $btn-rd;
         background-color: $indigo;
         color: $white;
-        font-weight: 700;
         cursor: grab;
+        @include mob-h3;
 
         &:hover {
             background-color: $graphite;
@@ -89,6 +94,7 @@
 
         @include tablet {
             height: $btn-ht-dt;
+            @include desk-h3;
             padding: 0 2rem;
             width: max-content;
             margin-left: 1rem;
@@ -174,7 +180,11 @@
     }
 
     &__label {
-        font-weight: 700;
+        @include mob-h3;
+
+        @include tablet {
+            @include desk-h3;
+        }
     }
 
     &__unfold-logo {

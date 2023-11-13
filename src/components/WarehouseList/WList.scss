@@ -3,12 +3,16 @@
 @use '../../partials/typography' as *;
 @use '../../partials/variables' as *;
 
+// html,
+// body,
+// #app,
+// #root,
+// #app>div {
+//     height: 100%;
+// }
+
 .warehouse__list {
-
-
     background-color: $white;
-
-
 
     &__header {
         border-bottom: 1px solid $cloud;
@@ -19,9 +23,6 @@
             @include mob-h1;
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
-
-
-
         }
 
         &-search {
@@ -31,7 +32,6 @@
             width: 100%;
 
             &:focus {
-
                 border-color: $indigo;
                 outline: none;
                 ;
@@ -40,7 +40,6 @@
 
 
         &-input {
-
             border: 1px solid $cloud ;
             padding: $ff-pd;
             border-radius: $ff-rd;
@@ -58,7 +57,6 @@
         }
 
         &-container {
-
             position: absolute;
             right: .625rem;
             pointer-events: none;
@@ -70,7 +68,6 @@
         &-icon {
             fill: $slate;
             margin-left: -1.6875rem;
-
             z-index: 10;
         }
 
@@ -78,7 +75,6 @@
 
 
         &-add-button {
-
             border-radius: $ff-rd;
             border: none;
             height: $ff-ht-dt;
@@ -96,22 +92,18 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-
         @include pad-mob;
-
-
 
         &-flex {
             width: 50%;
 
             &-two {
-
-
-                width: 50%;
-
-
+                width: 100%;
             }
 
+            &-three {
+                width: 50%;
+            }
         }
 
 
@@ -121,19 +113,26 @@
             width: 100%;
             padding-top: 1rem;
 
+            &-address {
+                width: 100%;
+                padding-top: 1rem;
+                display: flex;
+                flex-direction: column;
+
+            }
+
         }
 
         &-label {
-
             @include mob-h4;
             color: $slate;
 
         }
 
         &-value {
-
             @include mob-p2;
             color: $black;
+            width: 100%
         }
 
 
@@ -144,10 +143,7 @@
 
         &-email {
             @include mob-p2;
-
-
         }
-
     }
 
     &__actions {
@@ -159,15 +155,290 @@
         padding-top: 1rem;
 
         &-delete {
-
             fill: $red;
         }
 
         &-edit {
-
             fill: $indigo;
 
         }
 
+    }
+}
+
+
+////////////////////////////////////////////////////////////////
+
+
+
+.warehouse__list__row {
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid $cloud;
+
+    @include desktop {
+
+        padding: 1rem 3rem;
+    }
+
+
+
+
+
+    &-item {
+        width: 100%;
+
+        &-aicon {}
+
+        &-address {
+            width: 100%;
+
+        }
+
+        &-name {
+            width: 100%;
+            padding-left: 2rem;
+        }
+
+        &-edit-icon {
+            fill: $indigo;
+            margin-left: 1.5rem;
+        }
+
+        &-delete-icon {
+            fill: $red;
+        }
+    }
+
+    &__contact {
+
+        width: 100%;
+    }
+
+
+
+    &-edit {
+        width: 12%;
+        text-align: end;
+        // margin-left: 12px;
+        // display: flex;
+        // justify-content: space-around;
+    }
+}
+
+.warehouse__list__tab {
+
+    &-phone {
+        @include desk-p2
+    }
+
+    &-email {
+        @include desk-p2
+    }
+
+    &-pad {}
+
+    &-flex {
+
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        padding-bottom: 1.5rem;
+        border: .0625rem solid $cloud;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 2rem;
+            padding-bottom: 1.5rem;
+            border: none;
+            align-items: center;
+        }
+
+        @include desktop {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+    }
+
+    &-header {
+
+
+        &-title {
+            width: 100%;
+            @include desk-h1
+        }
+
+        &-search {
+            width: 100%;
+            padding: .3125rem 1rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: .0625rem solid $cloud;
+            border-radius: $btn-rd;
+            height: $btn-ht-mb;
+            position: relative;
+
+
+
+            @include tablet {
+                width: 48vw;
+            }
+
+
+        }
+
+        &-input {
+            width: 90%;
+            padding-left: 0.625rem;
+            padding-right: .625rem;
+            border: none;
+            outline: none;
+
+            &::placeholder {
+                color: $slate;
+            }
+        }
+
+
+    }
+
+    &-add {
+        // styles for .warehouse__list__tab-add
+
+        &-button {
+            width: 100%;
+            height: $btn-ht-mb;
+            padding: .3125rem;
+            border: .0625rem solid $cloud;
+            border-radius: $btn-rd;
+            background-color: $indigo;
+            color: $white;
+            font-weight: 700;
+            cursor: grab;
+
+            &:hover {
+                background-color: $graphite;
+            }
+
+            @include tablet {
+                height: $btn-ht-dt;
+                padding: 0 2rem;
+                width: max-content;
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    &-header-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        background-color: #F7F8F9;
+        padding: 1rem 2rem;
+        color: $slate;
+        border-bottom: 1px solid $cloud;
+
+        @include desktop {
+
+            padding: 1rem 3rem;
+        }
+
+
+    }
+
+    &-item1 {
+        display: flex;
+        flex-direction: row;
+        vertical-align: middle;
+        width: 45%;
+        align-items: center;
+
+
+    }
+
+    &-details {
+
+        width: 65%;
+        @include desk-p2
+    }
+
+    &-item-name {
+
+        display: flex;
+        width: 50%;
+        align-items: center;
+        @include desk-h3;
+        color: $indigo;
+    }
+
+    &-item-contact-name {
+
+        display: flex;
+        width: 50%;
+        align-items: center;
+        @include desk-h3;
+
+
+    }
+
+    &-item-contact-info {
+
+        display: flex;
+        width: 65%;
+        align-items: center;
+        @include desk-h3;
+
+
+    }
+
+    &-itemf {
+        display: flex;
+        width: 50%;
+        align-items: center;
+        @include desk-h3;
+
+    }
+
+    &-item2 {
+        width: 50%;
+        @include desk-p2
+    }
+
+    &-item3 {
+        display: flex;
+        width: 40%;
+        @include desk-p2;
+        align-items: center;
+
+    }
+
+    &-item {
+        display: flex;
+        vertical-align: middle;
+        width: 50%;
+
+
+        &-actions {
+            width: 12%;
+            display: flex;
+            justify-content: end;
+            @include desk-h3;
+        }
+
+
+    }
+
+    &-sort-icon {
+        width: 1.0625rem;
+        fill: $slate;
     }
 }

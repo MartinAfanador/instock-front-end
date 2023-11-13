@@ -5,7 +5,7 @@ import { ReactComponent as DropDownIcon } from './../../images/arrow_drop_down_b
 import { ReactComponent as ErrorIcon } from './../../images/error_black_24dp.svg';
 
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -130,7 +130,7 @@ function AddInventoryItem() {
         <main>
             <div className='add-inventory'>
                 <div className='add-inventory__heading-container'>
-                    <BackIcon className='add-inventory__back-icon' alt='A blue back arrow on a white background' />
+                    <Link to='/inventory'><BackIcon className='add-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
                     <h1 className='add-inventory__heading'>Add New Inventory Item</h1>
                 </div>
                 <form className='add-inventory__form'>

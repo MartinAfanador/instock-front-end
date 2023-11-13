@@ -19,8 +19,6 @@ function InventoryListItem( {item} ) {
     const quantity = item.quantity;
     const warehouse = item.warehouse_name;
     let statusText = item.status;
-    let status = false;
-    quantity ? (status = true) : (status = false);
 
     function showDeleteModal(item) {
         itemId.current = item;
@@ -63,7 +61,7 @@ function InventoryListItem( {item} ) {
                 <div className="inventory-item__details-subcontainer inventory-item__left-subcontainer">
                     <div className="inventory-item__item-container">
                         <span className="inventory-item__label">INVENTORY ITEM</span>
-                        <Link to={`/inventory/${id}`}><span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span></Link>
+                        <Link className='inventory-item__link' to={`/inventory/${id}`}><span className="inventory-item__text inventory-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background'/></span></Link>
                     </div>
                     <div className="inventory-item__category-container">
                         <span className="inventory-item__label">CATEGORY</span>
@@ -73,7 +71,7 @@ function InventoryListItem( {item} ) {
                 <div className="inventory-item__details-subcontainer inventory-item__right-subcontainer">
                     <div className="inventory-item__status-container">
                         <span className="inventory-item__label">STATUS</span>
-                        <span className={`inventory-item__text ${(status) ? ('inventory-item__in-stock') : ('inventory-item__out-of-stock')}`} >{statusText}</span>
+                        <span className={`inventory-item__text ${(statusText === 'In Stock') ? ('inventory-item__in-stock') : ('inventory-item__out-of-stock')}`} >{statusText}</span>
                     </div>
                     <div className="inventory-item__quantity-container">
                         <span className="inventory-item__label">QUANTITY</span>

@@ -192,17 +192,12 @@
 
 }
 
-.blue-background {
-    background-color: $graphite;
-    height: 3rem;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
-
 .item {
     position: relative;
     z-index: 2;
-    margin-top: -3rem; 
+    transform: translateY(-4.0875rem);
+    @include tablet {
+        transform: translateY(-5.5rem);
+    }
 }
 

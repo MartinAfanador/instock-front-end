@@ -3,6 +3,12 @@
 
 .inventory-item {
 
+    @include mob-p1;
+
+    @include tablet {
+        @include desk-p1;
+    }
+
     &:hover {
         background-color: rgb(46,102,229, 0.07);
     }
@@ -128,6 +134,7 @@
         color: $slate;
         font-weight: 700;
         margin-bottom: .3125rem;
+        @include mob-h3;
 
         @include tablet {
             display: none;
@@ -198,5 +205,13 @@
         border-radius: $btn-rd;
         color: $red;
         font-weight: 700;
+    }
+
+    &__link {
+        color: $indigo;
+
+        &:visited {
+            color: $indigo;
+        }
     }
 }

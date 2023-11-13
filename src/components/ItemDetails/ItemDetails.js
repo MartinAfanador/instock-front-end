@@ -18,7 +18,7 @@ function ItemDetails() {
                 console.log(`${backendApiURL}/api/inventories/${id}`);
                 const response = await axios.get(`${backendApiURL}/api/inventories/${id}`);
                 console.log(response.data);
-                setItemDetails(response.data[0]);
+                setItemDetails(response.data);
             } catch (error) {
                 console.error('Error fetching item details:', error);
             }

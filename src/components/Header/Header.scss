@@ -5,16 +5,22 @@
 
 .header {
     background-color: $graphite;
-    height: 7rem;
+    height: 10rem;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     font-weight: 700;
 
+    @include desktop {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
     &__layout {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         @include tablet {
             display: flex;
             flex-direction: row;
@@ -33,6 +39,7 @@
         align-items: center;
         width: 90vw;
         justify-content: space-around;
+
         @include tablet {
             padding-top: 0;
             width: 16rem;
@@ -43,14 +50,14 @@
         color: $white;
         width: 10rem;
         display: flex;
-        justify-content: center;    
+        justify-content: center;
     }
 
     &__button--inventory {
         @include tablet {
             margin-left: 1rem;
         }
-        
+
     }
 
     &__button--warehouses {
@@ -62,6 +69,7 @@
     &__button:hover {
         text-decoration: underline;
     }
+
     &__button--active {
         border-radius: 20px;
         background-color: $black;
@@ -71,4 +79,3 @@
         border: 0;
     }
 }
-

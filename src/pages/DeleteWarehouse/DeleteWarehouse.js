@@ -14,7 +14,7 @@ function DeleteWarehouse({ name, isOpen, onCancel, onConfirmed }) {
                 </div>
                 <div className="delete__warehouse-container">
                     <h1 className="delete__warehouse-title">Delete {name} warehouse?</h1>
-                    <p className="delete__warehouse-text">Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
+                    <p className="delete__warehouse-text">Please confirm that you’d like to delete {name} from the list of warehouses. You won’t be able to undo this action.</p>
 
                 </div >
                 <div className="delete__warehouse__button__container">

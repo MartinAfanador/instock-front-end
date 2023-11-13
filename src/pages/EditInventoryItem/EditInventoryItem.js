@@ -100,16 +100,16 @@ function EditInventoryItem() {
                 warehouse_id: selectedWarehouse.id,
                 item_name: itemName,
                 description: itemDescription,
-                category: itemDescription,
+                category: selectedCategory,
                 status: itemStatus,
                 quantity: Number(itemQuantity)
             }
 
             console.log(newEntry);
 
-            //const response = await axios.put(`http://localhost:8080/api/inventories/${id}`, newEntry);
+            const response = await axios.put(`http://localhost:8080/api/inventories/${id}`, newEntry);
             alert('The item has been successfully updated!');
-            //navigate('/inventory');
+            navigate('/inventory');
         } catch (error) {
             console.error();
         }

@@ -1,7 +1,7 @@
 @use './../../partials/mixins' as *;
 @use './../../partials/variables' as *;
 
-.add-inventory {
+.edit-inventory {
 
     display: flex;
     flex-direction: column;
@@ -268,7 +268,7 @@
         }
     }
 
-    &__add-button {
+    &__save-button {
         width: 48%;
         @include button-mob;
         @include mob-h3;

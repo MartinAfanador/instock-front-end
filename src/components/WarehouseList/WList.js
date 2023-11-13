@@ -17,15 +17,16 @@ function Wlist() {
     const [mobView, setMobView] = useState(window.innerWidth < 768);
 
 
-    const itemId = useRef(null);
+    const itemId = useRef({});
 
 
     function onSearch(searchText) {
 
     }
 
-    function showDeleteModal(id) {
-        itemId.current = id;
+    function showDeleteModal(item) {
+        itemId.current = item;
+        console.log("item,", item);
         setShouldShowDeleteModal(true);
     }
 
@@ -49,7 +50,7 @@ function Wlist() {
     function onDeleteModalConfirmed() {
         const itemIdToDelete = itemId.current;
         if (itemIdToDelete) {
-            deleteItem(itemIdToDelete);
+            deleteItem(itemIdToDelete.id);
         }
     }
 
@@ -99,13 +100,15 @@ function Wlist() {
                                 <div className='warehouse__list__section-value'>{item.warehouse_name}</div>
                             </div>
 
-                            <div className='warehouse__list__section-container'>
+                            <div className='warehouse__list__section-container-address'>
                                 <div className='warehouse__list__section-label'>ADDRESS</div>
-                                <div className='warehouse__list__section-value'>{item.address}</div>
+                                <div className='warehouse__list__section-flex-two'>
+                                    <div className='warehouse__list__section-value'>{item.address},{item.city},{item.country}</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className='warehouse__list__section-flex-two'>
+                        <div className='warehouse__list__section-flex-three'>
                             <div className='warehouse__list__section-container'>
                                 <div className='warehouse__list__section-label'>CONTACT NAME</div>
                                 <div className='warehouse__list__section-value'>{item.contact_name}</div>
@@ -121,7 +124,7 @@ function Wlist() {
 
                     <section>
                         <div className='warehouse__list__actions'>
-                            <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item.id)} />
+                            <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item)} />
                             <Link to={`/edit-warehouse/${item.id}`}>
                                 <Edit className='warehouse__list__actions-edit' />
                             </Link>
@@ -147,6 +150,7 @@ function Wlist() {
                     {items}
                     {backdrop}
                     <DeleteWarehouse
+                        name={itemId.value.warehouse_name}
                         isOpen={shouldShowDeleteModal}
                         onCancel={onDeleteModalCancel}
                         onConfirmed={onDeleteModalConfirmed}
@@ -160,63 +164,80 @@ function Wlist() {
 
         if (data.length > 0) {
             const itemsDesk = searchData.map(item => (
-                <div className="warehouse__list-row" key={item.id}>
-                    <div className="warehouse__list-row-item">
-                        {item.warehouse_name}
-                        <RightArrow className="warehouse__list-row-item-aicon" />
+                <div className="warehouse__list__row" key={item.id}>
+
+                    <div className="warehouse__list__tab-item1">
+                        <div className="warehouse__list__tab-item-name">
+                            {item.warehouse_name}
+                            <RightArrow className="warehouse__list__row-item-aicon" />
+                        </div>
+                        <div className="warehouse__list__tab-item3">{item.address},{item.city},{item.country}</div>
                     </div>
-                    <div className="warehouse__list-row-item-address">{item.address}</div>
-                    <div className="warehouse__list-row-item-name">{item.contact_name}</div>
-                    <div>
-                        <div className='warehouse__list__contact-info-phone'>{item.contact_phone}</div>
-                        <div className='warehouse__list__contact-info-email'>{item.contact_email}</div>
+                    <div className="warehouse__list__tab-item1">
+
+                        <div className="warehouse__list__tab-item2">{item.contact_name}</div>
+                        <div className='warehouse__list__tab-details'>
+                            <div className='warehouse__list__tab-phone'>{item.contact_phone}</div>
+                            <div className='warehouse__list__tab-email'>{item.contact_email}</div>
+                        </div>
                     </div>
-                    <div className="warehouse__list-row-item warehouse__list-row-item--actions">
-                        <Link to={`/edit-warehouse/${item.id}`}>
-                            <Edit className="warehouse__list-row-item__edit-icon" alt="Edit" onClick={() => onEdit(item)} />
-                        </Link>
+                    <div className="warehouse__list__row-edit">
+
                         {/* <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item.id)} /> */}
-                        <Delete className="warehouse__list-row-item__delete-icon" alt="Delete" onClick={() => showDeleteModal(item.id)} />
+                        <Delete className="warehouse__list__row-item-delete-icon" alt="Delete" onClick={() => showDeleteModal(item)} />
+                        <Link to={`/edit-warehouse/${item.id}`}>
+                            <Edit className="warehouse__list__row-item-edit-icon" alt="Edit" onClick={() => onEdit(item)} />
+                        </Link>
                     </div>
                 </div>
             ));
 
             content = (
-                <div className='warehouse__list'>
+                <div className='warehouse__list__tab-pad'>
 
-                    <section className='warehouse__list__header'>
-                        <h1 className='warehouse__list__header-title'>Warehouses</h1>
-                        <div className='warehouse__list__header-search'>
-                            <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
+                    <section className='warehouse__list__tab-header'>
+                        <div className='warehouse__list__tab-flex'>
+                            <h1 className='warehouse__list__tab-header-title'>Warehouses</h1>
+                            <div className='warehouse__list__tab-header-search'>
+                                <input className='warehouse__list__tab-header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
+                                <div className='warehouse__list__header-container'>
+                                    <Search className="warehouse__list__header-icon" />
+                                </div>
+                            </div>
+                            <div className='warehouse__list__tab-add'>
+                                <button className='warehouse__list__tab-add-button' type="submit">+ Add New Warehouse</button>
+                            </div>
                         </div>
-                        <div className='warehouse__list__header-add'>
-                            <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>
-                        </div>
-                        <header className="warehouse__list-header">
-                            <div className="warehouse__list-header-item">
-                                Inventory Item
-                                <Unfold className="warehouse__list-header-item__sort-icon" />
+                        <section className="warehouse__list__tab-header-row">
+                            <div className="warehouse__list__tab-item1">
+                                <div className="warehouse__list__tab-itemf">
+                                    WAREHOUSE
+                                    <Unfold className="warehouse__list__tab-sort-icon" />
+                                </div>
+                                <div className="warehouse__list__tab-itemf">
+                                    ADDRESS
+                                    <Unfold className="warehouse__list__tab-sort-icon" />
+                                </div>
                             </div>
-                            <div className="warehouse__list-header-item">
-                                Category
-                                <Unfold className="warehouse__list-header-item__sort-icon" />
+                            <div className="warehouse__list__tab-item1">
+                                <div className="warehouse__list__tab-item-contact-name">
+                                    CONTACT NAME
+                                    <Unfold className="warehouse__list__tab-sort-icon" />
+                                </div>
+                                <div className="warehouse__list__tab-item-contact-info">
+                                    CONTACT INFORMATION
+                                    <Unfold className="warehouse__list__tab-sort-icon" />
+                                </div>
                             </div>
-                            <div className="warehouse__list-header-item">
-                                Status
-                                <Unfold className="warehouse__list-header-item__sort-icon" />
+                            <div className="warehouse__list__tab-item-actions">
+                                ACTIONS
                             </div>
-                            <div className="warehouse__list-header-item">
-                                Quantity
-                                <Unfold className="warehouse__list-header-item__sort-icon" />
-                            </div>
-                            <div className="warehouse__list-header-item warehouse__list-header-item--actions">
-                                Actions
-                            </div>
-                        </header>
+                        </section>
                     </section>
                     {itemsDesk}
                     {backdrop}
                     <DeleteWarehouse
+                        name={itemId.current.warehouse_name}
                         isOpen={shouldShowDeleteModal}
                         onCancel={onDeleteModalCancel}
                         onConfirmed={onDeleteModalConfirmed}

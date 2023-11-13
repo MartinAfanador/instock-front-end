@@ -16,7 +16,6 @@
     align-items: center;
 }
 
-
 .delete__warehouse {
     height: 73%;
     z-index: 10;
@@ -29,10 +28,7 @@
     background-color: $white;
     padding-top: 1rem;
 
-
-
     @include tablet {
-
         width: 81%;
         height: 22%;
         border-radius: .25rem;
@@ -45,14 +41,12 @@
     }
 
     &-box {
-
         display: flex;
         justify-content: flex-end;
         width: 100%;
     }
 
     &-container {
-
 
         @include pad-mob;
         height: 85%;
@@ -63,8 +57,6 @@
             height: 60%;
             padding-left: 3rem;
             padding-right: 3rem;
-
-
         }
     }
 
@@ -85,7 +77,6 @@
         }
     }
 
-
     &__button__container {
         @include pad-mob;
         display: flex;
@@ -93,15 +84,10 @@
         justify-content: center;
         margin: 0 auto;
 
-
-
         @include tablet {
             justify-content: flex-end;
             padding-left: 3rem;
             padding-right: 3rem;
-
-
-
         }
 
         &-cancel {

@@ -3,4 +3,6 @@
 @use '../../partials/typography' as *;
 @use '../../partials/variables' as *;
 
-.home__background {}
+.home__background {
+    height: 100vh;
+}

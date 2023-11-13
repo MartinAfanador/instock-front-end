@@ -22,15 +22,15 @@ function App() {
     <BrowserRouter>
     <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/add-warehouse' element={<AddWarehouse />} />
-        <Route path='/warehouse/:id' element={<CurrentWarehouse />} />
-        <Route path='/edit-warehouse/:id' element={<EditWarehouse />} />
-        <Route path='/inventory' element={<Inventory />} />
-        <Route path='/inventory/:id' element={<CurrentInventoryItem />} />
-        <Route path='/add-inventory-item' element={<AddInventoryItem />} />
-        <Route path='/delete-inventory-item/:id' element={<DeleteInventoryItem />} />
-        <Route path='/edit-inventory-item/:id' element={<EditInventoryItem />} />
+        <Route path='/warehouses' element={<Home />} />
+        <Route path='/warehouses/add-warehouse' element={<AddWarehouse />} />
+        <Route path='/warehouses/:id' element={<CurrentWarehouse />} />
+        <Route path='/warehouses/edit-warehouse/:id' element={<EditWarehouse />} />
+        <Route path='/inventories' element={<Inventory />} />
+        <Route path='/inventories/inventory/:id' element={<CurrentInventoryItem />} />
+        <Route path='/inventories/add-inventory-item' element={<AddInventoryItem />} />
+        <Route path='/inventories/delete-inventory-item/:id' element={<DeleteInventoryItem />} />
+        <Route path='/inventories/edit-inventory-item/:id' element={<EditInventoryItem />} />
       </Routes>
       <Footer />
     </BrowserRouter>

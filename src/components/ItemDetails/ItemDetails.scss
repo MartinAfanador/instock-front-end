@@ -4,12 +4,15 @@
 @use '../../partials/variables' as *;
 
 .item {
-    margin: 1rem;
+    margin: auto;
+    width: 90%;
     border: none;
     border-radius: 5px;
     background-color: $white;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-
+    @include desktop {
+        width: 85%;
+    }
     &__title-layout {
         display: flex;
         align-items: center;
@@ -85,20 +88,6 @@
         color: $black;
         margin-bottom: .5rem;
     }
-
-    // &__in-stock {
-    //     background: rgba(21, 161, 107, 0.07);
-    //     border-radius: 20px;
-    //     width: fit-content;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     height: 24px;
-    //     padding: .75rem;
-    //     color: $green;
-    //     font-weight: 600;
-
-    // }
 
     &__logo {
         width: 2.25rem;
@@ -195,9 +184,11 @@
 .item {
     position: relative;
     z-index: 2;
-    transform: translateY(-4.0875rem);
+    top: -2.5rem;
     @include tablet {
-        transform: translateY(-5.5rem);
+        top: -4.5rem;
     }
 }
-
+main {
+    background-color: $grey;
+}

@@ -111,8 +111,7 @@ function EditWarehouse() {
 
 
     return (
-        <>
-            {/* <div className="blue-background"></div> */}
+        <main>
             <section className="header-layout">
                 <div className="edit-warehouse__title">
                     <BackArrow className='inventory-item__edit-icon' alt='A blue arrow on a white background' onClick={() => navigate('/')} />
@@ -231,7 +230,7 @@ function EditWarehouse() {
                     </form>
                 </div>
             </section >
-        </>
+        </main>
     );
 }
 export default EditWarehouse;

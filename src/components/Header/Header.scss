@@ -11,9 +11,14 @@
     padding-right: 1rem;
     font-weight: 700;
 
+    @include tablet {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     @include desktop {
-        padding-left: 3rem;
-        padding-right: 3rem;
+        padding-left: 6rem;
+        padding-right: 6rem;
     }
 
     &__layout {

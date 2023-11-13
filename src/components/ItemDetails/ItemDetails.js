@@ -74,7 +74,6 @@ function ItemDetails() {
 
                                     <div className='item__label ='>
                                         Status:
-                                        {/* <div className='item__in-stock'>{itemDetails.status}</div> */}
                                         <span className={`item__text ${isInStock ? 'item__in-stock' : 'item__out-of-stock'}`}>
                                             {statusText}
                                         </span>

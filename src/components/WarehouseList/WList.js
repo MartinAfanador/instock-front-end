@@ -58,7 +58,7 @@ function Wlist() {
     useEffect(() => {
         async function getWareHouseData() {
             try {
-                const response = await axios.get("http://localhost:8080/api/warehouses");
+                const response = await axios.get("http://localhost:8086/api/warehouses");
                 setData(response.data);
                 setSearchData(response.data);
             } catch (error) {
@@ -97,7 +97,11 @@ function Wlist() {
                         <div className='warehouse__list__section-flex'>
                             <div className='warehouse__list__section-container'>
                                 <div className='warehouse__list__section-label'>WAREHOUSE</div>
-                                <div className='warehouse__list__section-value'>{item.warehouse_name}</div>
+                                <div className='warehouse__list__section-value'>
+                                    <Link className='warehouse__list__section-icon-box' to={`/warehouse/${item.id}`}>{item.warehouse_name}
+                                        <RightArrow className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' />
+                                    </Link>
+                                </div>
                             </div>
 
                             <div className='warehouse__list__section-container-address'>
@@ -134,9 +138,9 @@ function Wlist() {
             ));
 
             content = (
-                <div className='warehouse__list'>
-                    <section className='warehouse__list__header'>
-                        <h1 className='warehouse__list__header-title'>Warehouses</h1>
+                <div className='warehouse__list__header'>
+                    <section className='warehouse__list__header__flex'>
+                        <h1 className='warehouse__list__header__flex-title'>Warehouses</h1>
                         <div className='warehouse__list__header-search'>
                             <input className='warehouse__list__header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
                             <div className='warehouse__list__header-container'>
@@ -150,7 +154,7 @@ function Wlist() {
                     {items}
                     {backdrop}
                     <DeleteWarehouse
-                        name={itemId.value.warehouse_name}
+                        name={itemId.current.warehouse_name}
                         isOpen={shouldShowDeleteModal}
                         onCancel={onDeleteModalCancel}
                         onConfirmed={onDeleteModalConfirmed}
@@ -168,8 +172,9 @@ function Wlist() {
 
                     <div className="warehouse__list__tab-item1">
                         <div className="warehouse__list__tab-item-name">
-                            {item.warehouse_name}
-                            <RightArrow className="warehouse__list__row-item-aicon" />
+                            <Link className="warehouse__list__tab-item-link" to={`/warehouse/${item.id}`}>{item.warehouse_name}
+                                <RightArrow className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' />
+                            </Link>
                         </div>
                         <div className="warehouse__list__tab-item3">{item.address},{item.city},{item.country}</div>
                     </div>
@@ -200,7 +205,7 @@ function Wlist() {
                             <h1 className='warehouse__list__tab-header-title'>Warehouses</h1>
                             <div className='warehouse__list__tab-header-search'>
                                 <input className='warehouse__list__tab-header-input' placeholder='Search' onChange={(e) => onSearch(e.target.value)} />
-                                <div className='warehouse__list__header-container'>
+                                <div className='warehouse__list__tab-header-container'>
                                     <Search className="warehouse__list__header-icon" />
                                 </div>
                             </div>

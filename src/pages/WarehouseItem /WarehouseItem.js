@@ -1,9 +1,9 @@
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 
-function CurrentWarehouse() {
+function CurrentInventoryItem() {
     return (
         <WarehouseDetails />
     );
 }
 
-export default CurrentWarehouse;
+export default CurrentInventoryItem;

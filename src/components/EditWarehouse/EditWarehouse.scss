@@ -125,6 +125,11 @@
             padding-bottom: 1rem;
         }
     }
+    &__error-icon {
+        height: 2.5vh;
+        max-height: 1rem;
+        fill: $red;
+    }
 }
 
 .edit-btn {
@@ -203,4 +208,15 @@
 
 main {
     background-color: $grey;
+}
+
+.error-message.first-render {
+display: none;
+}
+.error-message.default-render {
+display: flex;
+color:$red;
+}
+.default {
+display: none;
 }

@@ -6,6 +6,7 @@ import { ReactComponent as ErrorIcon } from './../../images/error_black_24dp.svg
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 function AddInventoryItem() {
@@ -28,7 +29,7 @@ function AddInventoryItem() {
     const [itemName, setItemName] = useState('');
     const [itemDescription, setItemDescription] = useState('');
     const [itemStatus, setItemStatus] = useState('');
-    const [itemQuantity, setItemQuantity] = useState('');
+    const [itemQuantity, setItemQuantity] = useState(0);
 
     const changeName = (event) => {
         setItemName(event.target.value);
@@ -68,12 +69,40 @@ function AddInventoryItem() {
         navigate('/inventory');
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         setFirstRender(false);
-
         console.log(`${itemName}, ${itemDescription}, ${selectedCategory}, ${itemStatus}, ${itemQuantity}, ${selectedWarehouse}`);
+
+        if (!itemName || !itemDescription || (selectedCategory === 'Please select') ||
+            !itemStatus || (selectedWarehouse === 'Please select')) {
+                return;
+        }
+
+        if (isNaN(itemQuantity)) {
+            alert (`The quantity must be have a numeric value! ${typeof itemQuantity}`)
+            return;
+        }
+
+        if (itemStatus === 'In Stock' && itemQuantity == 0) {
+            alert('Please provide item quantity or select out of stock!');
+            return;
+        }
+
+        try {
+
+            const newEntry = {
+
+            }
+
+            const response = await axios.post('http://localhost:8080/api/inventories', newEntry);
+        } catch (error) {
+            console.error();
+        }
+        
+        
+
     }
 
     return (
@@ -194,7 +223,7 @@ function AddInventoryItem() {
                                     name='quantity'
                                     placeholder='Item Quantity'
                                     onChange={changeQuantity} />
-                                    <div className={`${(itemQuantity !== '' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <div className={`${((itemStatus && itemQuantity != 0) || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
                                     <ErrorIcon
                                         className="add-inventory__error-icon"
                                         alt="white exclamation point on a red background"

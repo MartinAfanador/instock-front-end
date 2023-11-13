@@ -102,8 +102,6 @@ function AddInventoryItem() {
                 quantity : Number(itemQuantity)
             }
 
-            console.log(newEntry);
-
             const response = await axios.post('http://localhost:8080/api/inventories', newEntry);
             alert('The item has been successfully added!');
             navigate('/inventory');
@@ -116,7 +114,6 @@ function AddInventoryItem() {
     }
 
     useEffect(() => {
-        
         const fetchWarehouses = async () => {
             const response = await axios.get('http://localhost:8080/api/warehouses');
             setWarehouseOptions(response.data);

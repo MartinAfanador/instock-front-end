@@ -4,7 +4,7 @@ import { ReactComponent as Close } from '../../images/close_black_24dp.svg';
 function DeleteInventoryItem({ name, isOpen, onCancel, onConfirmed }) {
 
     if (!isOpen) return null;
-    console.log("name ", name);
+    // console.log("name ", name);
 
     return (
         <div className="delete__background">

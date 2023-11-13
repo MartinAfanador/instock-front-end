@@ -1,28 +1,77 @@
 import './AddInventoryItem.scss';
+
 import { ReactComponent as BackIcon } from './../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as DropDownIcon } from './../../images/arrow_drop_down_black_24dp.svg';
+import { ReactComponent as ErrorIcon } from './../../images/error_black_24dp.svg';
+
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 function AddInventoryItem() {
+
+    const navigate = useNavigate();
+
     const categoryOptions = ['Electronics', 'Gear', 'Apparel', 'Accessories', 'Health'];
     const warehouseOptions = ['Manhatten', 'Washington', 'Jersey', 'SF', 'Santa Monica', 'Seattle', 'Miami', 'Boston'];
+
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('Please select');
+
+    const [isWarehouseOpen, setIsWarehouseOpen] = useState(false);
+    const [selectedWarehouse, setSelectedWarehouse] = useState('Please select');
+
+    const [firstRender, setFirstRender] = useState(true);
+
+    const [itemName, setItemName] = useState('');
+    const [itemDescription, setItemDescription] = useState('');
+    const [itemStatus, setItemStatus] = useState('');
+    const [itemQuantity, setItemQuantity] = useState('');
+
+    const changeName = (event) => {
+        setItemName(event.target.value);
+    }
+
+    const changeDescription = (event) => {
+        setItemDescription(event.target.value);
+    }
+
+    const changeStatus = (event) => {
+        setItemStatus(event.target.value);
+    }
+
+    const changeQuantity = (event) => {
+        setItemQuantity(event.target.value);
+    }
+
     const toggleCategoryDropdown = () => {
         setIsCategoryOpen(!isCategoryOpen);
     }
+
+    const toggleWarehouseDropdown = () => {
+        setIsWarehouseOpen(!isWarehouseOpen);
+    }
+
     const handleCategoryDropDown = (option) => {
         setSelectedCategory(option);
         setIsCategoryOpen(false);
     }
-    const [isWarehouseOpen, setIsWarehouseOpen] = useState(false);
-    const [selectedWarehouse, setSelectedWarehouse] = useState('Please select');
-    const toggleWarehouseDropdown = () => {
-        setIsWarehouseOpen(!isWarehouseOpen);
-    }
+
     const handleWarehouseDropDown = (option) => {
         setSelectedWarehouse(option);
         setIsWarehouseOpen(false);
     }
+
+    const handleCancel = () => {
+        navigate('/inventory');
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log(`${itemName}, ${itemDescription}, ${selectedCategory}, ${itemStatus}, ${itemQuantity}, ${selectedWarehouse}`);
+    }
+
     return (
         <main>
             <div className='add-inventory'>
@@ -36,17 +85,29 @@ function AddInventoryItem() {
                             <h2 className='add-inventory__subheading'>Item Details</h2>
                             <div className='add-inventory__name-container'>
                                 <label className='add-inventory__label' htmlFor='item-name'>Item Name</label>
-                                <input className='add-inventory__input-name' type='text' id='item-name' name='item-name' placeholder='Item Name' />
+                                <input 
+                                    className='add-inventory__input' 
+                                    type='text' id='item-name' 
+                                    name='item-name' 
+                                    placeholder='Item Name' 
+                                    onChange={changeName}/>
                             </div>
-                            <div className='add-inventory__name-container'>
+                            <div className='add-inventory__description-container'>
                                 <label className='add-inventory__label' htmlFor='item-description'>Description</label>
-                                <textarea className='add-inventory__input-description' id='item-description' name='item-description' placeholder='Please enter a brief item description...' />
+                                <textarea 
+                                    className='add-inventory__input-description add-inventory__input' 
+                                    id='item-description' 
+                                    name='item-description' 
+                                    placeholder='Please enter a brief item description...' 
+                                    onChange={changeDescription}/>
                             </div>
                             <div className='add-inventory__category-container'>
                                 <label className='add-inventory__label'>Category</label>
                                 <div className='add-inventory__input-category' onClick={toggleCategoryDropdown}>
-                                    {selectedCategory}
-                                    <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
+                                    <div className='add-inventory__category-option'>
+                                        {selectedCategory}
+                                        <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
+                                    </div>
                                     {
                                         isCategoryOpen && (
                                             <ul className='add-inventory__category-list'>
@@ -54,7 +115,7 @@ function AddInventoryItem() {
                                                     categoryOptions.map((option) => {
                                                         return <li
                                                             key={option}
-                                                            className='add-inventory__category-item'
+                                                            className='add-inventory__category-list-item'
                                                             onClick={() => handleCategoryDropDown(option)}>
                                                             {option}
                                                         </li>
@@ -72,22 +133,43 @@ function AddInventoryItem() {
                                 <label className='add-inventory__label'>Status</label>
                                 <div className='add-inventory__radio-button-container'>
                                     <div className='add-inventory__in-stock-container'>
-                                        <input className='add-inventory__radio-button' type='radio' id='in-stock' name='availability' value='In Stock' />
+                                        <input className='add-inventory__radio-button' 
+                                            type='radio' 
+                                            id='in-stock' 
+                                            name='availability' 
+                                            value='In Stock' 
+                                            onChange={changeStatus}/>
                                         <label className='add-inventory__in-stock-label' htmlFor='in-stock'>In stock</label>
                                     </div>
                                     <div className='add-inventory__out-of-stock-container'>
-                                        <input className='add-inventory__radio-button' type='radio' id='out-of-stock' name='availability' value='Out Of Stock' />
+                                        <input 
+                                            className='add-inventory__radio-button' 
+                                            type='radio' 
+                                            id='out-of-stock' 
+                                            name='availability' 
+                                            value='Out Of Stock'
+                                            onChange={changeStatus} />
                                         <label className='add-inventory__out-of-stock-label' htmlFor='out-of-stock'>Out of stock</label>
                                     </div>
                                 </div>
                             </div>
-                            <div className='add-inventory__quantity-container'>
+                            <div className={`${(itemStatus === 'Out Of Stock') ? 'hide' : 'add-inventory__quantity-container'}`}>
                                 <label className='add-inventory__label' htmlFor='quantity'>Quantity</label>
-                                <input className='add-inventory__input-quantity' type='text' id='quantity' name='quantity' />
+                                <input 
+                                    className='add-inventory__input' 
+                                    type='text' 
+                                    id='quantity' 
+                                    name='quantity' 
+                                    placeholder='Item Quantity'
+                                    onChange={changeQuantity}/>
                             </div>
-                            <div className='add-inventory__input-warehouse' onClick={toggleWarehouseDropdown}>
-                                    {selectedWarehouse}
-                                    <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
+                            <div className='add-inventory__warehouse-container'>
+                                <label className='add-inventory__label'>Warehouse</label>
+                                <div className='add-inventory__input-category' onClick={toggleWarehouseDropdown}>
+                                <div className='add-inventory__category-option'>
+                                        {selectedWarehouse}
+                                        <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
+                                    </div>
                                     {
                                         isWarehouseOpen && (
                                             <ul className='add-inventory__category-list'>
@@ -95,7 +177,7 @@ function AddInventoryItem() {
                                                     warehouseOptions.map((option) => {
                                                         return <li
                                                             key={option}
-                                                            className='add-inventory__category-item'
+                                                            className='add-inventory__category-list-item'
                                                             onClick={() => handleWarehouseDropDown(option)}>
                                                             {option}
                                                         </li>
@@ -105,11 +187,12 @@ function AddInventoryItem() {
                                         )
                                     }
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div className='add-inventory__buttons-container'>
-                        <button className='add-inventory__cancel-button'>Cancel</button>
-                        <button className='add-inventory__add-button'>+ Add Item</button>
+                        <button className='add-inventory__cancel-button' onClick={handleCancel}>Cancel</button>
+                        <button className='add-inventory__add-button' onClick={handleSubmit}>+ Add Item</button>
                     </div>
                 </form>
             </div>

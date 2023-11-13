@@ -1,0 +1,215 @@
+@use './../../partials/mixins' as *;
+@use './../../partials/variables' as *;
+
+.add-inventory {
+
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+
+    &__heading-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 2rem 1rem;
+        margin-bottom: 1rem;
+        border-bottom: .0625rem solid $cloud;
+    }
+
+    &__back-icon {
+        fill: $indigo;
+        margin-right: 1rem;
+    }
+
+    &__heading {
+        @include mob-h1;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    &__main-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__details-container {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 2rem;
+        border-bottom: .0625rem solid $cloud;
+    }
+
+    &__subheading {
+        @include mob-h2;
+        margin-bottom: 1rem;
+    }
+
+    &__name-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &__label {
+        @include mob-h3;
+        margin-bottom: 0.5rem;
+    }
+
+    &__input {
+        padding: .5rem .9375rem;
+        border: .0625rem solid $cloud;
+        border-radius: $btn-rd;
+
+        &:focus {
+            outline: blue;
+            box-shadow: 0 0 .0625rem .0625rem $indigo;
+        }
+    }
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &__input-description {
+        resize: none;
+        height: 15vh;
+    }
+
+    &__category-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__category-option {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: $slate;
+        padding-left: 0.5rem;
+    }
+
+    &__input-category {
+        padding: .3125rem ;
+        border: .0625rem solid $cloud;
+        border-radius: $btn-rd;
+        @include mob-p2;
+
+        &:focus {
+            outline: blue;
+            box-shadow: 0 0 .0625rem .0625rem $indigo;
+        }
+    }
+
+    &__drop-down-icon {
+        fill: $slate;
+    }
+
+    &__category-list {
+        list-style-type: none;
+        color: $slate;
+    }
+
+    &__category-list-item {
+        padding: 0.5rem;
+
+        &:hover {
+            background-color: rgb(46,102,229, 0.07);
+        }
+    }
+
+    &__availability-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    &__status-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+
+        @include mob-p2;
+    }
+
+    &__radio-button-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__in-stock-container {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+    }
+
+    &__radio-button {
+        margin-right: 0.5rem;
+    }
+
+    &__out-of-stock-container {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+    }
+
+    &__quantity-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &__warehouse-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    &__buttons-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $grey;
+        padding: 2rem 1rem;
+    }
+
+    &__cancel-button {
+        width: 48%;
+        @include button-mob;
+        @include mob-h3;
+        background-color: $white;
+        border: .0625rem solid $slate;
+        color: $slate;
+    }
+
+    &__add-button {
+        width: 48%;
+        @include button-mob;
+        @include mob-h3;
+        background-color: $indigo;
+        color: $white;
+        border: none;
+
+        &:hover {
+            background-color: $graphite;
+        }
+    }
+}
+
+::placeholder {
+    color: $slate;
+}
+
+.hide {
+    display: none;
+}

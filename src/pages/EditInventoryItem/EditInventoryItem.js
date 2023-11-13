@@ -46,6 +46,10 @@ function EditInventoryItem() {
 
     const changeStatus = (event) => {
         setItemStatus(event.target.value);
+        
+        if(itemStatus === 'Out of Stock') {
+            setItemQuantity(0);
+        }
     }
 
     const changeQuantity = (event) => {

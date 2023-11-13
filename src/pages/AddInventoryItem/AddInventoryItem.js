@@ -222,7 +222,7 @@ function AddInventoryItem() {
                                             type='radio'
                                             id='out-of-stock'
                                             name='availability'
-                                            value='Out Of Stock'
+                                            value='Out of Stock'
                                             onChange={changeStatus} />
                                         <label className='add-inventory__out-of-stock-label' htmlFor='out-of-stock'>Out of stock</label>
                                     </div>
@@ -235,7 +235,7 @@ function AddInventoryItem() {
                                     <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
                                 </div>
                             </div>
-                            <div className={`${(itemStatus === 'Out Of Stock') ? 'hide' : 'add-inventory__quantity-container'}`}>
+                            <div className={`${(itemStatus === 'Out of Stock') ? 'hide' : 'add-inventory__quantity-container'}`}>
                                 <label className='add-inventory__label' htmlFor='quantity'>Quantity</label>
                                 <input
                                     className='add-inventory__input'
@@ -276,7 +276,7 @@ function AddInventoryItem() {
                                         )
                                     }
                                 </div>
-                                <div className={`${(selectedWarehouse !== 'Please select' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                <div className={`${(selectedWarehouse.warehouse_name !== 'Please select' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
                                     <ErrorIcon
                                         className="add-inventory__error-icon"
                                         alt="white exclamation point on a red background"

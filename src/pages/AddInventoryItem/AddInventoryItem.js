@@ -14,15 +14,17 @@ function AddInventoryItem() {
     const navigate = useNavigate();
 
     const errorMessage = 'This field is required';
+    const defaultWarehouse = { warehouse_name : 'Please select' };
 
     const categoryOptions = ['Electronics', 'Gear', 'Apparel', 'Accessories', 'Health'];
-    const warehouseOptions = ['Manhatten', 'Washington', 'Jersey', 'SF', 'Santa Monica', 'Seattle', 'Miami', 'Boston'];
+
+    const [warehouseOptions, setWarehouseOptions] = useState(null);
 
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('Please select');
 
     const [isWarehouseOpen, setIsWarehouseOpen] = useState(false);
-    const [selectedWarehouse, setSelectedWarehouse] = useState('Please select');
+    const [selectedWarehouse, setSelectedWarehouse] = useState(defaultWarehouse);
 
     const [firstRender, setFirstRender] = useState(true);
 
@@ -93,7 +95,12 @@ function AddInventoryItem() {
         try {
 
             const newEntry = {
-
+                id: selectedWarehouse.id,
+                item_name : itemName,
+                description : itemDescription,
+                category : itemDescription,
+                status : itemStatus,
+                quantity : itemQuantity
             }
 
             const response = await axios.post('http://localhost:8080/api/inventories', newEntry);
@@ -103,6 +110,20 @@ function AddInventoryItem() {
         
         
 
+    }
+
+    useEffect(() => {
+        
+        const fetchWarehouses = async () => {
+            const response = await axios.get('http://localhost:8080/api/warehouses');
+            setWarehouseOptions(response.data);
+        }
+
+        fetchWarehouses();
+    }, []);
+
+    if (!warehouseOptions) {
+        return (<div>Loading!</div>);
     }
 
     return (
@@ -235,7 +256,7 @@ function AddInventoryItem() {
                                 <label className='add-inventory__label'>Warehouse</label>
                                 <div className='add-inventory__input-category' onClick={toggleWarehouseDropdown}>
                                     <div className='add-inventory__category-option'>
-                                        {selectedWarehouse}
+                                        {selectedWarehouse.warehouse_name}
                                         <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
                                     </div>
                                     {
@@ -244,10 +265,10 @@ function AddInventoryItem() {
                                                 {
                                                     warehouseOptions.map((option) => {
                                                         return <li
-                                                            key={option}
+                                                            key={option.id}
                                                             className='add-inventory__category-list-item'
                                                             onClick={() => handleWarehouseDropDown(option)}>
-                                                            {option}
+                                                            {option.warehouse_name}
                                                         </li>
                                                     })
                                                 }

@@ -136,7 +136,7 @@ setFirstRender(false);
         <main>
             <section className="header-layout">
                 <div className="edit-warehouse__title">
-                    <BackArrow className='inventory-item__edit-icon' alt='A blue arrow on a white background' onClick={() => navigate('/')} />
+                    <BackArrow className='inventory-item__edit-icon' alt='A blue arrow on a white background' onClick={() => navigate(-1)} />
                     <h1 className="edit-warehouse__title-text">Edit Warehouse</h1>
                 </div>
                 <div className="edit-warehouse">

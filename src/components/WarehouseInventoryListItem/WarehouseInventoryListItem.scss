@@ -1,0 +1,205 @@
+@use './../../partials/mixins' as *;
+@use './../../partials/variables' as *;
+
+.inventory__warehouse-item {
+
+    &:hover {
+        background-color: rgb(46, 102, 229, 0.07);
+    }
+
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: .0625rem solid $cloud;
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 3rem;
+    }
+
+    @include desktop {
+        padding: 1rem 5rem;
+    }
+
+    &__details-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+    }
+
+    &__details-subcontainer {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__left-subcontainer {
+        margin-left: 1rem;
+        display: initial;
+        width: 48%;
+
+        @include tablet {
+
+            margin-left: 0;
+            display: flex;
+        }
+    }
+
+    &__right-subcontainer {
+        margin-left: 1rem;
+
+        @include tablet {
+            width: 50%;
+            margin-left: 0;
+        }
+    }
+
+    &__item-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        color: $indigo;
+
+        @include tablet {
+            width: 60%;
+            margin-bottom: 0;
+            padding: .3125rem;
+        }
+    }
+
+    &__category-container {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            width: 40%;
+            padding: .3125rem;
+        }
+    }
+
+    &__status-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            width: 60%;
+            margin-bottom: 0;
+        }
+    }
+
+    &__quantity-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            width: 50%;
+            margin-bottom: 0;
+        }
+    }
+
+    &__warehouse-container {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            width: 40%;
+        }
+    }
+
+    &__label {
+        color: $slate;
+        font-weight: 700;
+        margin-bottom: .3125rem;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__text {
+        width: fit-content;
+    }
+
+    &__item-link {
+        cursor: grab;
+        font-weight: 700;
+        display: flex;
+        padding-top: .1875rem;
+        padding-bottom: .1875rem;
+        align-items: flex-end;
+    }
+
+    &__buttons-container {
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet {
+            width: 10%;
+            justify-content: center;
+        }
+    }
+
+    &__button {
+        border: none;
+        background-color: transparent;
+
+        @include tablet {
+            height: fit-content;
+        }
+    }
+
+    &__chevron-icon {
+        fill: $indigo;
+    }
+
+    &__delete-icon {
+        fill: $red;
+        cursor: grab;
+    }
+
+    &__edit-icon {
+        fill: $indigo;
+        cursor: grab;
+
+        @include tablet {
+            margin-left: 1rem;
+        }
+    }
+
+    &__in-stock {
+        background-color: rgba(21, 132, 99, 0.07);
+        border-radius: $btn-rd;
+        padding: .1875rem .9375rem;
+        color: $green;
+        font-weight: 700;
+    }
+
+    &__out-of-stock {
+        background-color: rgba(201, 69, 21, 0.07);
+        padding: .1875rem .9375rem;
+        border-radius: $btn-rd;
+        color: $red;
+        font-weight: 700;
+    }
+}

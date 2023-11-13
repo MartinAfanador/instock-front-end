@@ -10,13 +10,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function EditInventoryItem() {
-    
+
     const navigate = useNavigate();
     const { id } = useParams();
 
     const errorMessage = 'This field is required';
-    const defaultWarehouse = { warehouse_name : 'Please select' };
-    
+    const defaultWarehouse = { warehouse_name: 'Please select' };
+
     const categoryOptions = ['Electronics', 'Gear', 'Apparel', 'Accessories', 'Health'];
 
     const [warehouseOptions, setWarehouseOptions] = useState(null);
@@ -46,8 +46,8 @@ function EditInventoryItem() {
 
     const changeStatus = (event) => {
         setItemStatus(event.target.value);
-        
-        if(itemStatus === 'Out of Stock') {
+
+        if (itemStatus === 'Out of Stock') {
             setItemQuantity(0);
         }
     }
@@ -111,7 +111,7 @@ function EditInventoryItem() {
 
             console.log(newEntry);
 
-            const response = await axios.put(`http://localhost:8080/api/inventories/${id}`, newEntry);
+            const response = await axios.put(`http://localhost:8086/api/inventories/${id}`, newEntry);
             alert('The item has been successfully updated!');
             navigate('/inventory');
         } catch (error) {
@@ -121,13 +121,13 @@ function EditInventoryItem() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const warehouses = await axios.get('http://localhost:8080/api/warehouses');
+            const warehouses = await axios.get('http://localhost:8086/api/warehouses');
             setWarehouseOptions(warehouses.data);
-        
-            const response = await axios.get(`http://localhost:8080/api/inventories/${id}`);
+
+            const response = await axios.get(`http://localhost:8086/api/inventories/${id}`);
 
             setCurrentItem(response.data);
-            
+
             setItemName(response.data.item_name);
             setItemDescription(response.data.description);
             setSelectedCategory(response.data.category);
@@ -148,7 +148,10 @@ function EditInventoryItem() {
         <main>
             <div className='edit-inventory'>
                 <div className='edit-inventory__heading-container'>
-                    <Link to='/inventory'><BackIcon className='edit-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
+                    <BackIcon className='edit-inventory__back-icon' alt='A blue back arrow on a white background' onClick={() => {
+                        navigate(-1);
+
+                    }} />
                     <h1 className='edit-inventory__heading'>Edit Inventory Item</h1>
                 </div>
                 <form className='edit-inventory__form'>

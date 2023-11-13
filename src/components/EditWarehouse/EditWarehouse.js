@@ -90,7 +90,6 @@ function EditWarehouse() {
 setFirstRender(false);
         
         if (!warehouseName || !address || !city || !country || !contact || !phoneNumber || !email || !position) {
-            // alert('All fields are required!')
             return;
         }
 

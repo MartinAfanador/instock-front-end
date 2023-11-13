@@ -36,7 +36,7 @@ function Wlist() {
 
     async function deleteItem(itemIdToDelete) {
         try {
-            await axios.delete(`http://localhost:8086/api/warehouses/${itemIdToDelete}`);
+            await axios.delete(`http://localhost:8080/api/warehouses/${itemIdToDelete}`);
             const filteredData = searchData.filter(item => item.id !== itemIdToDelete);
             setSearchData(filteredData);
             setData(filteredData);
@@ -58,7 +58,7 @@ function Wlist() {
     useEffect(() => {
         async function getWareHouseData() {
             try {
-                const response = await axios.get("http://localhost:8081/api/warehouses");
+                const response = await axios.get("http://localhost:8080/api/warehouses");
                 setData(response.data);
                 setSearchData(response.data);
             } catch (error) {

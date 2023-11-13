@@ -12,6 +12,8 @@ function AddInventoryItem() {
 
     const navigate = useNavigate();
 
+    const errorMessage = 'This field is required';
+
     const categoryOptions = ['Electronics', 'Gear', 'Apparel', 'Accessories', 'Health'];
     const warehouseOptions = ['Manhatten', 'Washington', 'Jersey', 'SF', 'Santa Monica', 'Seattle', 'Miami', 'Boston'];
 
@@ -69,6 +71,8 @@ function AddInventoryItem() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        setFirstRender(false);
+
         console.log(`${itemName}, ${itemDescription}, ${selectedCategory}, ${itemStatus}, ${itemQuantity}, ${selectedWarehouse}`);
     }
 
@@ -85,21 +89,35 @@ function AddInventoryItem() {
                             <h2 className='add-inventory__subheading'>Item Details</h2>
                             <div className='add-inventory__name-container'>
                                 <label className='add-inventory__label' htmlFor='item-name'>Item Name</label>
-                                <input 
-                                    className='add-inventory__input' 
-                                    type='text' id='item-name' 
-                                    name='item-name' 
-                                    placeholder='Item Name' 
-                                    onChange={changeName}/>
+                                <input
+                                    className='add-inventory__input'
+                                    type='text' id='item-name'
+                                    name='item-name'
+                                    placeholder='Item Name'
+                                    onChange={changeName} />
+                                <div className={`${(itemName !== '' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
+                                </div>
                             </div>
                             <div className='add-inventory__description-container'>
                                 <label className='add-inventory__label' htmlFor='item-description'>Description</label>
-                                <textarea 
-                                    className='add-inventory__input-description add-inventory__input' 
-                                    id='item-description' 
-                                    name='item-description' 
-                                    placeholder='Please enter a brief item description...' 
-                                    onChange={changeDescription}/>
+                                <textarea
+                                    className='add-inventory__input-description add-inventory__input'
+                                    id='item-description'
+                                    name='item-description'
+                                    placeholder='Please enter a brief item description...'
+                                    onChange={changeDescription} />
+                                    <div className={`${(itemDescription !== '' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
+                                </div>
                             </div>
                             <div className='add-inventory__category-container'>
                                 <label className='add-inventory__label'>Category</label>
@@ -125,6 +143,13 @@ function AddInventoryItem() {
                                         )
                                     }
                                 </div>
+                                <div className={`${(selectedCategory !== 'Please select' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
+                                </div>
                             </div>
                         </div>
                         <div className='add-inventory__availability-container'>
@@ -133,40 +158,54 @@ function AddInventoryItem() {
                                 <label className='add-inventory__label'>Status</label>
                                 <div className='add-inventory__radio-button-container'>
                                     <div className='add-inventory__in-stock-container'>
-                                        <input className='add-inventory__radio-button' 
-                                            type='radio' 
-                                            id='in-stock' 
-                                            name='availability' 
-                                            value='In Stock' 
-                                            onChange={changeStatus}/>
+                                        <input className='add-inventory__radio-button'
+                                            type='radio'
+                                            id='in-stock'
+                                            name='availability'
+                                            value='In Stock'
+                                            onChange={changeStatus} />
                                         <label className='add-inventory__in-stock-label' htmlFor='in-stock'>In stock</label>
                                     </div>
                                     <div className='add-inventory__out-of-stock-container'>
-                                        <input 
-                                            className='add-inventory__radio-button' 
-                                            type='radio' 
-                                            id='out-of-stock' 
-                                            name='availability' 
+                                        <input
+                                            className='add-inventory__radio-button'
+                                            type='radio'
+                                            id='out-of-stock'
+                                            name='availability'
                                             value='Out Of Stock'
                                             onChange={changeStatus} />
                                         <label className='add-inventory__out-of-stock-label' htmlFor='out-of-stock'>Out of stock</label>
                                     </div>
                                 </div>
+                                <div className={`${(itemStatus !== '' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
+                                </div>
                             </div>
                             <div className={`${(itemStatus === 'Out Of Stock') ? 'hide' : 'add-inventory__quantity-container'}`}>
                                 <label className='add-inventory__label' htmlFor='quantity'>Quantity</label>
-                                <input 
-                                    className='add-inventory__input' 
-                                    type='text' 
-                                    id='quantity' 
-                                    name='quantity' 
+                                <input
+                                    className='add-inventory__input'
+                                    type='text'
+                                    id='quantity'
+                                    name='quantity'
                                     placeholder='Item Quantity'
-                                    onChange={changeQuantity}/>
+                                    onChange={changeQuantity} />
+                                    <div className={`${(itemQuantity !== '' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
+                                </div>
                             </div>
                             <div className='add-inventory__warehouse-container'>
                                 <label className='add-inventory__label'>Warehouse</label>
                                 <div className='add-inventory__input-category' onClick={toggleWarehouseDropdown}>
-                                <div className='add-inventory__category-option'>
+                                    <div className='add-inventory__category-option'>
                                         {selectedWarehouse}
                                         <DropDownIcon className='add-inventory__drop-down-icon' alt='A black down arrow on a white background' />
                                     </div>
@@ -186,6 +225,13 @@ function AddInventoryItem() {
                                             </ul>
                                         )
                                     }
+                                </div>
+                                <div className={`${(selectedWarehouse !== 'Please select' || firstRender) ? 'hide' : 'add-inventory__error-container'}`}>
+                                    <ErrorIcon
+                                        className="add-inventory__error-icon"
+                                        alt="white exclamation point on a red background"
+                                    />
+                                    <span className='add-inventory__error-message'>{`${errorMessage}`}</span>
                                 </div>
                             </div>
                         </div>

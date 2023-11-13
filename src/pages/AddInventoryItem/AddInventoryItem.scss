@@ -21,6 +21,24 @@
         margin-right: 1rem;
     }
 
+    &__error-icon {
+        height: 2.5vh;
+        max-height: 1rem;
+        fill: $red;
+    }
+
+    &__error-message {
+        color: $red;
+        @include mob-p2
+    }
+
+    &__error-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: .3125rem;
+    }
+
     &__heading {
         @include mob-h1;
     }
@@ -212,4 +230,19 @@
 
 .hide {
     display: none;
+}
+
+// .error-message.first-render {
+//     display: none;
+// }
+// .error-message.default-render {
+//     display: flex;
+//     color:$red;
+// }
+// .default {
+//     display: none;
+// }
+
+.show-error {
+    
 }

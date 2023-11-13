@@ -1,7 +1,6 @@
 import "./DeleteWarehouse.scss";
 import { ReactComponent as Close } from '../../images/close_black_24dp.svg';
 
-
 function DeleteWarehouse({ name, isOpen, onCancel, onConfirmed }) {
 
     if (!isOpen) return null;

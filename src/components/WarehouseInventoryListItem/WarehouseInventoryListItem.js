@@ -5,9 +5,9 @@ import { ReactComponent as EditIcon } from './../../images/edit_black_24dp.svg';
 import { ReactComponent as ChevronIcon } from './../../images/chevron_right_black_24dp.svg';
 import { Link } from 'react-router-dom';
 
-function WarehouseInventoryListItem({ item }) {
+function WarehouseInventoryListItem({ item, onDeleteClick }) {
 
-    console.log("item", item);
+    // console.log("item", item);
     const id = item.id;
     const itemName = item.item_name;
     const category = item.category;
@@ -46,8 +46,11 @@ function WarehouseInventoryListItem({ item }) {
                 </div>
             </div>
             <div className="inventory__warehouse-item__buttons-container">
-                <button className="inventory__warehouse-item__button"><DeleteIcon className='inventory-item__delete-icon' alt='A red trash can on a white background' /></button>
-                <Link to={`/edit-inventory-item/${id}`}><button className="inventory__warehouse-item__button">
+                <button className="inventory__warehouse-item__button" onClick={() => {
+                    onDeleteClick(item);
+                }}>
+                    <DeleteIcon className='inventory-item__delete-icon' alt='A red trash can on a white background' /></button>
+                <Link to={`/inventories/edit-inventory-item/${id}`}><button className="inventory__warehouse-item__button">
                     <EditIcon className='inventory__warehouse-item__edit-icon' alt='A blue pencil on a white background' />
                 </button></Link>
             </div>

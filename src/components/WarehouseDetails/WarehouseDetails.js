@@ -6,12 +6,13 @@ import { ReactComponent as EditIcon } from './../../images/edit_black_24dp.svg';
 import { ReactComponent as ChevronIcon } from './../../images/chevron_right_black_24dp.svg';
 import { ReactComponent as UnfoldMoreIcon } from './../../images/unfold_more_black_24dp.svg'
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
 import WarehouseInventoryListItem from '../../components/WarehouseInventoryListItem/WarehouseInventoryListItem';
+import DeleteInventoryItem from '../../pages/DeleteInventoryItem/DeleteInventoryItem';
 
 const backendApiURL = 'http://localhost:8086';
 
@@ -20,8 +21,11 @@ function WarehouseDetails() {
     const { id } = useParams();
     const [itemDetails, setItemDetails] = useState([]);
     const [inventories, setInventories] = useState([]);
+    const [shouldShowDeleteModal, setShouldShowDeleteModal] = useState(false);
 
-    console.log("WarehouseDetails ", id);
+    const itemId = useRef({});
+
+    // console.log("WarehouseDetails ", id);
 
     useEffect(() => {
         async function fetchData() {
@@ -46,6 +50,45 @@ function WarehouseDetails() {
     // const warehouse = item.warehouse_name;
     // let statusText = item.status;
 
+
+    function showDeleteModal(item) {
+        itemId.current = item;
+
+        setShouldShowDeleteModal(true);
+    }
+
+    function onDeleteModalCancel() {
+        setShouldShowDeleteModal(false);
+    }
+
+    async function deleteItem(itemIdToDeleteId) {
+        try {
+            setShouldShowDeleteModal(false);
+            const response = await axios.delete(`http://localhost:8086/api/inventories/${itemIdToDeleteId}`);
+            console.log("response", response);
+            const filteredData = inventories.filter(item => item.id !== itemIdToDeleteId);
+            console.log(filteredData);
+            setInventories(filteredData);
+            alert('Item deleted');
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+    function onDeleteModalConfirmed() {
+        const itemIdToDelete = itemId.current;
+
+        if (itemIdToDelete) {
+            deleteItem(itemIdToDelete.id);
+        }
+    }
+
+    let backdrop = null;
+    if (shouldShowDeleteModal) {
+        backdrop = <div className="modal-backdrop" onClick={onDeleteModalCancel}></div>;
+    }
+
     if (!itemDetails) {
         return <div>Loading!!!</div>
     }
@@ -63,12 +106,12 @@ function WarehouseDetails() {
             <div className='item_wh'>{/* container */}
                 <div className='item_wh__header'> {/* header */}
                     <div className='item_wh__title-layout'>
-                        <BackArrow className='item_wh__logo' onClick={() => navigate('/')} />
+                        <BackArrow className='item_wh__logo' onClick={() => navigate(-1)} />
                         <div className='item_wh__header-name'>{itemDetails.warehouse_name}</div>
                     </div>
                     {/* Edit functionaly needs to be copied over fomr ItemDetail Details compoenent */}
                     <div className='item_wh__header-button'>
-                        <Link to={`/edit-warehouse/${id}`}><Edit className='item_wh__edit' /><div className='item_wh__header-button--tablet'>Edit</div></Link></div>
+                        <Link to={`/warehouses/edit-warehouse/${id}`}><Edit className='item_wh__edit' /><div className='item_wh__header-button--tablet'>Edit</div></Link></div>
                 </div>
 
 
@@ -145,9 +188,17 @@ function WarehouseDetails() {
                     </div>
                 </div>
                 {
-                    inventories.map((item) => <WarehouseInventoryListItem key={item.id} item={item} />)
+                    inventories.map((item) => <WarehouseInventoryListItem key={item.id} item={item} onDeleteClick={showDeleteModal} />)
                 }
             </div>
+            {backdrop}
+            < DeleteInventoryItem
+                name={itemId.current.item_name}
+                isOpen={shouldShowDeleteModal}
+                onCancel={onDeleteModalCancel}
+                onConfirmed={onDeleteModalConfirmed}
+            />
+
         </div>
     )
 }

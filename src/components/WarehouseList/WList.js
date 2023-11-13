@@ -6,7 +6,7 @@ import { ReactComponent as RightArrow } from '../../images/chevron_right_black_2
 import { ReactComponent as Search } from '../../images/search_black_24dp.svg';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DeleteWarehouse from '../../pages/DeleteWarehouse/DeleteWarehouse';
 
 function Wlist() {
@@ -15,8 +15,10 @@ function Wlist() {
     const [searchData, setSearchData] = useState([]);
     const [shouldShowDeleteModal, setShouldShowDeleteModal] = useState(false);
     const [mobView, setMobView] = useState(window.innerWidth < 768);
+    const navigate = useNavigate();
 
 
+    console.log("wlist");
     const itemId = useRef({});
 
 
@@ -36,7 +38,7 @@ function Wlist() {
 
     async function deleteItem(itemIdToDelete) {
         try {
-            await axios.delete(`http://localhost:8080/api/warehouses/${itemIdToDelete}`);
+            await axios.delete(`http://localhost:8086/api/warehouses/${itemIdToDelete}`);
             const filteredData = searchData.filter(item => item.id !== itemIdToDelete);
             setSearchData(filteredData);
             setData(filteredData);
@@ -98,7 +100,7 @@ function Wlist() {
                             <div className='warehouse__list__section-container'>
                                 <div className='warehouse__list__section-label'>WAREHOUSE</div>
                                 <div className='warehouse__list__section-value'>
-                                    <Link className='warehouse__list__section-icon-box' to={`/warehouse/${item.id}`}>{item.warehouse_name}
+                                    <Link className='warehouse__list__section-icon-box' to={`/warehouses/${item.id}`}>{item.warehouse_name}
                                         <RightArrow className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' />
                                     </Link>
                                 </div>
@@ -129,7 +131,7 @@ function Wlist() {
                     <section>
                         <div className='warehouse__list__actions'>
                             <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item)} />
-                            <Link to={`/edit-warehouse/${item.id}`}>
+                            <Link to={`/warehouses/edit-warehouse/${item.id}`}>
                                 <Edit className='warehouse__list__actions-edit' />
                             </Link>
                         </div>
@@ -148,7 +150,7 @@ function Wlist() {
                             </div>
                         </div>
                         <div className='warehouse__list__header-add'>
-                            <button className='warehouse__list__header-add-button' type="submit">+ Add New Warehouse</button>
+                            <button className='warehouse__list__header-add-button' onClick={() => navigate('/warehouses/add-warehouse')}>+ Add New Warehouse</button>
                         </div>
                     </section>
                     {items}
@@ -172,7 +174,7 @@ function Wlist() {
 
                     <div className="warehouse__list__tab-item1">
                         <div className="warehouse__list__tab-item-name">
-                            <Link className="warehouse__list__tab-item-link" to={`/warehouse/${item.id}`}>{item.warehouse_name}
+                            <Link className="warehouse__list__tab-item-link" to={`/warehouses/${item.id}`}>{item.warehouse_name}
                                 <RightArrow className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' />
                             </Link>
                         </div>
@@ -190,7 +192,7 @@ function Wlist() {
 
                         {/* <Delete className='warehouse__list__actions-delete' onClick={() => showDeleteModal(item.id)} /> */}
                         <Delete className="warehouse__list__row-item-delete-icon" alt="Delete" onClick={() => showDeleteModal(item)} />
-                        <Link to={`/edit-warehouse/${item.id}`}>
+                        <Link to={`/warehouses/edit-warehouse/${item.id}`}>
                             <Edit className="warehouse__list__row-item-edit-icon" alt="Edit" onClick={() => onEdit(item)} />
                         </Link>
                     </div>
@@ -210,7 +212,7 @@ function Wlist() {
                                 </div>
                             </div>
                             <div className='warehouse__list__tab-add'>
-                                <button className='warehouse__list__tab-add-button' type="submit">+ Add New Warehouse</button>
+                                <button className='warehouse__list__tab-add-button' onClick={() => navigate('/warehouses/add-warehouse')} >+ Add New Warehouse</button>
                             </div>
                         </div>
                         <section className="warehouse__list__tab-header-row">

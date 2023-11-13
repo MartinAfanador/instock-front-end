@@ -9,6 +9,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function EditInventoryItem() {
+    
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -116,24 +117,25 @@ function EditInventoryItem() {
     useEffect(() => {
         const fetchWarehouses = async () => {
             const response = await axios.get('http://localhost:8080/api/warehouses');
-
-            setWarehouseOptions(response.data);
+            // setWarehouseOptions(response.data);
+            console.log(`Warehouses: ${response}`);
         }
 
-        const fetchItem = async () => {
-            const response = await axios.get(`http://localhost:8080/api/inventories/${id}`);
-            
-            setCurrentItem(response.data);
-            
-            setItemName(response.data.item_name);
-            setItemDescription(response.data.description);
-            setSelectedCategory(response.data.category);
-            setItemStatus(response.data.status);
-            setItemQuantity(response.data.quantity);
-        }
+        fetchWarehouses();
 
-        fetchWarehouses()
-        fetchItem();
+        // const fetchItem = async () => {
+        //     const response = await axios.get(`http://localhost:8080/api/inventories/${id}`);
+            
+        //     setCurrentItem(response.data);
+            
+        //     setItemName(response.data.item_name);
+        //     setItemDescription(response.data.description);
+        //     setSelectedCategory(response.data.category);
+        //     setItemStatus(response.data.status);
+        //     setItemQuantity(response.data.quantity);
+        // }
+
+        // fetchItem();
     }, []);
 
     if (!currentItem) {

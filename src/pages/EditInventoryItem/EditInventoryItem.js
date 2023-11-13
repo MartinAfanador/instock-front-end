@@ -6,6 +6,7 @@ import { ReactComponent as ErrorIcon } from './../../images/error_black_24dp.svg
 
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
 import axios from 'axios';
 
 function EditInventoryItem() {
@@ -115,27 +116,25 @@ function EditInventoryItem() {
     }
 
     useEffect(() => {
-        const fetchWarehouses = async () => {
-            const response = await axios.get('http://localhost:8080/api/warehouses');
-            // setWarehouseOptions(response.data);
-            console.log(`Warehouses: ${response}`);
+        const fetchData = async () => {
+            const warehouses = await axios.get('http://localhost:8080/api/warehouses');
+            setWarehouseOptions(warehouses.data);
+        
+            const response = await axios.get(`http://localhost:8080/api/inventories/${id}`);
+
+            setCurrentItem(response.data);
+            
+            setItemName(response.data.item_name);
+            setItemDescription(response.data.description);
+            setSelectedCategory(response.data.category);
+            setItemStatus(response.data.status);
+            setItemQuantity(response.data.quantity);
+
+            const matchedWarehouse = warehouses.data.filter((warehouse) => response.data.warehouse_name === warehouse.warehouse_name);
+            setSelectedWarehouse(matchedWarehouse[0]);
         }
 
-        fetchWarehouses();
-
-        // const fetchItem = async () => {
-        //     const response = await axios.get(`http://localhost:8080/api/inventories/${id}`);
-            
-        //     setCurrentItem(response.data);
-            
-        //     setItemName(response.data.item_name);
-        //     setItemDescription(response.data.description);
-        //     setSelectedCategory(response.data.category);
-        //     setItemStatus(response.data.status);
-        //     setItemQuantity(response.data.quantity);
-        // }
-
-        // fetchItem();
+        fetchData();
     }, []);
 
     if (!currentItem) {

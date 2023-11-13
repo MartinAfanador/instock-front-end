@@ -75,7 +75,6 @@ function AddInventoryItem() {
         event.preventDefault();
 
         setFirstRender(false);
-        console.log(`${itemName}, ${itemDescription}, ${selectedCategory}, ${itemStatus}, ${itemQuantity}, ${selectedWarehouse}`);
 
         if (!itemName || !itemDescription || (selectedCategory === 'Please select') ||
             !itemStatus || (selectedWarehouse === 'Please select')) {
@@ -95,15 +94,19 @@ function AddInventoryItem() {
         try {
 
             const newEntry = {
-                id: selectedWarehouse.id,
+                warehouse_id: selectedWarehouse.id,
                 item_name : itemName,
                 description : itemDescription,
                 category : itemDescription,
                 status : itemStatus,
-                quantity : itemQuantity
+                quantity : Number(itemQuantity)
             }
 
+            console.log(newEntry);
+
             const response = await axios.post('http://localhost:8080/api/inventories', newEntry);
+            alert('The item has been successfully added!');
+            navigate('/inventory');
         } catch (error) {
             console.error();
         }

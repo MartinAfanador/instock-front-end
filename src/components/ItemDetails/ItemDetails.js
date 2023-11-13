@@ -3,9 +3,9 @@ import axios from 'axios';
 import './ItemDetails.scss';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
-const backendApiURL = 'http://localhost:8081';
+const backendApiURL = 'http://localhost:8080';
 
 function ItemDetails() {
     const navigate = useNavigate();
@@ -13,11 +13,8 @@ function ItemDetails() {
     const [itemDetails, setItemDetails] = useState(null);
     useEffect(() => {
         async function fetchData() {
-            console.log(`${backendApiURL}/api/inventories/${id}`);
             try {
-                console.log(`${backendApiURL}/api/inventories/${id}`);
                 const response = await axios.get(`${backendApiURL}/api/inventories/${id}`);
-                console.log(response.data);
                 setItemDetails(response.data);
             } catch (error) {
                 console.error('Error fetching item details:', error);
@@ -39,10 +36,10 @@ function ItemDetails() {
                 <div className='item'>{/* container */}
                     <div className='item__header'> {/* header */}
                         <div className='item__title-layout'>
-                            <BackArrow className='item__logo' onClick={() => navigate('/inventory')} />
+                            <BackArrow className='item__logo' onClick={() => navigate('/inventories')} />
                             <div className='item__header-name'>{itemDetails.item_name}</div>
                         </div>
-                        <div className='item__header-button'><Edit className='item__edit' /><div className='item__header-button--tablet'>Edit</div></div>
+                        <Link to={`/inventories/edit-inventory-item/${id}`}><div className='item__header-button'><Edit className='item__edit' /><div className='item__header-button--tablet'>Edit</div></div></Link>
                     </div>
 
 

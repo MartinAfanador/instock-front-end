@@ -89,7 +89,7 @@ function EditInventoryItem() {
         }
 
         if (isNaN(itemQuantity)) {
-            alert(`The quantity must be have a numeric value! ${typeof itemQuantity}`)
+            alert(`The quantity must be have a numeric value!`);
             return;
         }
 

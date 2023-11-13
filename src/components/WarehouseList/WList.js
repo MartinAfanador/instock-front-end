@@ -26,7 +26,6 @@ function Wlist() {
 
     function showDeleteModal(item) {
         itemId.current = item;
-        console.log("item,", item);
         setShouldShowDeleteModal(true);
     }
 
@@ -86,8 +85,6 @@ function Wlist() {
         backdrop = <div className="modal-backdrop" onClick={onDeleteModalCancel}></div>;
     }
 
-    // cmd+sht+p
-    console.log("searchData", searchData);
     if (mobView) {
         // Mobile view JSX
         if (data.length > 0) {

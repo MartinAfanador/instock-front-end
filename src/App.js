@@ -1,8 +1,6 @@
 import './App.scss';
-import ItemDetails from './components/ItemDetails/ItemDetails';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import DeleteWarehouse from './pages/DeleteWarehouse/DeleteWarehouse';
 import CurrentWarehouse from './pages/CurrentWarehouse/CurrentWarehouse';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import AddWarehouse from './pages/AddWarehouse/AddWarehouse';
@@ -20,7 +18,7 @@ import Footer from './components/Footer/Footer';
 function App() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/warehouses' element={<Home />} />

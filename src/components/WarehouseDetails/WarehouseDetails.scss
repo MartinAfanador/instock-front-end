@@ -3,16 +3,62 @@
 @use '../../partials/typography' as *;
 @use '../../partials/variables' as *;
 
-.item {
+.container_wh {
+    width: 80%;
     margin: auto;
-    width: 90%;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    position: relative;
+    top: -2rem;
+    background-color: white;
+
+
+}
+
+.blue-background_wh {
+    background-color: white;
+
+
+}
+
+.item_wh {
+    margin: 1rem;
     border: none;
     border-radius: 5px;
     background-color: $white;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 
-    @include desktop {
-        width: 85%;
+
+    &__left-subcontainer {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+
+        &-category {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            justify-content: center;
+        }
+    }
+
+    &__right-subcontainer {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+    }
+
+    &__status-container {
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+        padding-left: 1rem;
+    }
+
+    &__quantity-container {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
     }
 
     &__title-layout {
@@ -80,16 +126,33 @@
     }
 
     &__label {
+        font-weight: 700;
         color: $slate;
         margin-bottom: .5rem;
         display: flex;
         flex-direction: column;
+        // width: 100%;
+        // margin-left: 1rem;
     }
 
     &__description {
         color: $black;
         margin-bottom: .5rem;
     }
+
+    // &__in-stock {
+    //     background: rgba(21, 161, 107, 0.07);
+    //     border-radius: 20px;
+    //     width: fit-content;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     height: 24px;
+    //     padding: .75rem;
+    //     color: $green;
+    //     font-weight: 600;
+
+    // }
 
     &__logo {
         width: 2.25rem;
@@ -101,10 +164,11 @@
 
     &__bottom-container {
         padding: $ff-pd;
-        padding-left: 2rem;
 
         @include tablet {
             display: flex;
+
+
         }
     }
 
@@ -116,18 +180,21 @@
         @include tablet {
             display: flex;
             flex-direction: row;
+            width: 56%;
         }
     }
 
     &__label--quantity {
-        margin-left: 3rem;
+        font-weight: 700;
         display: flex;
         flex-direction: column;
         align-items: start;
         margin-bottom: 0;
+        width: 48%;
 
         @include tablet {
             margin-left: 5rem;
+
         }
     }
 
@@ -143,6 +210,13 @@
         flex-direction: row;
     }
 
+    @include tablet {
+
+        display: initial;
+
+
+    }
+
     &__container-tablet1 {
         display: flex;
         flex-direction: column;
@@ -150,12 +224,16 @@
         @include tablet {
             width: 50%;
             padding-right: 3rem;
+            padding-left: 1rem;
         }
     }
 
     &__container-tablet2 {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
 
         @include tablet {
             border-left: 1px solid $cloud;
@@ -186,16 +264,10 @@
 
 }
 
+
+
 .item {
     position: relative;
     z-index: 2;
-    top: -2.5rem;
-
-    @include tablet {
-        top: -4.5rem;
-    }
-}
-
-main {
-    background-color: $grey;
+    margin-top: -3rem;
 }

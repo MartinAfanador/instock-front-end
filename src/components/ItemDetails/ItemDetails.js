@@ -5,9 +5,10 @@ import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.
 import { ReactComponent as Edit } from '../../images/edit_black_24dp.svg';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
-const backendApiURL = 'http://localhost:8080';
+const backendApiURL = 'http://localhost:8086';
 
 function ItemDetails() {
+
     const navigate = useNavigate();
     const { id } = useParams();
     const [itemDetails, setItemDetails] = useState(null);
@@ -93,7 +94,7 @@ function ItemDetails() {
                     </div>
                 </div>
             </div>
-        </main>
+        </main >
     )
 }
 export default ItemDetails;

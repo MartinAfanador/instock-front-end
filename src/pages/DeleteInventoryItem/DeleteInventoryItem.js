@@ -3,6 +3,7 @@ import { ReactComponent as Close } from '../../images/close_black_24dp.svg';
 
 function DeleteInventoryItem({ name, isOpen, onCancel, onConfirmed }) {
 
+    console.log("delete inventory", isOpen);
     if (!isOpen) return null;
 
     return (

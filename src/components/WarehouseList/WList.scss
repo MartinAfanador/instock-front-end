@@ -14,27 +14,30 @@
 .warehouse__list {
     background-color: $white;
 
+
+
     &__header {
-        border-bottom: 1px solid $cloud;
-        @include pad-mob;
+        width: 80%;
+        margin: auto;
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        position: relative;
+        top: -1rem;
+        background-color: white;
 
 
-        &-title {
-            @include mob-h1;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
 
-        &-search {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
 
-            &:focus {
-                border-color: $indigo;
-                outline: none;
-                ;
+
+        &__flex {
+            border-bottom: 1px solid $cloud;
+            @include pad-mob;
+
+
+            &-title {
+                @include mob-h1;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
             }
         }
 
@@ -86,6 +89,7 @@
             @include desk-h3;
 
         }
+
     }
 
     &__section {
@@ -134,6 +138,14 @@
             color: $black;
             width: 100%
         }
+
+        &-icon-box {
+
+            display: flex;
+            align-items: center;
+            @include desk-h3;
+        }
+
 
 
         &-phone {
@@ -237,7 +249,16 @@
         @include desk-p2
     }
 
-    &-pad {}
+    &-pad {
+        width: 90%;
+        margin: auto;
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        position: relative;
+        top: -2rem;
+        background-color: white;
+    }
+
 
     &-flex {
 
@@ -265,6 +286,7 @@
     }
 
     &-header {
+
 
 
         &-title {
@@ -375,6 +397,15 @@
         align-items: center;
         @include desk-h3;
         color: $indigo;
+    }
+
+    &-item-link {
+        display: flex;
+        align-items: center;
+        @include desk-h3;
+
+
+
     }
 
     &-item-contact-name {

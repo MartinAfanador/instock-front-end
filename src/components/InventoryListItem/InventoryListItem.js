@@ -1,14 +1,14 @@
 import './InventoryListItem.scss';
-import { ReactComponent as DeleteIcon} from './../../images/delete_black_24dp.svg';
-import { ReactComponent as EditIcon}  from './../../images/edit_black_24dp.svg';
-import { ReactComponent as ChevronIcon}  from './../../images/chevron_right_black_24dp.svg';
+import { ReactComponent as DeleteIcon } from './../../images/delete_black_24dp.svg';
+import { ReactComponent as EditIcon } from './../../images/edit_black_24dp.svg';
+import { ReactComponent as ChevronIcon } from './../../images/chevron_right_black_24dp.svg';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import DeleteInventoryItem from '../../pages/DeleteInventoryItem/DeleteInventoryItem';
 
-function InventoryListItem( {item} ) {
+function InventoryListItem({ item }) {
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function InventoryListItem( {item} ) {
 
     function showDeleteModal(item) {
         itemId.current = item;
-       
+
         setShouldShowDeleteModal(true);
     }
 
@@ -40,19 +40,19 @@ function InventoryListItem( {item} ) {
         try {
             setShouldShowDeleteModal(false);
             const response = await axios.delete(`http://localhost:8080/api/inventories/${itemIdToDeleteId}`);
-            
+
             alert('Item deleted');
-            
-       
+
+
         } catch (error) {
             console.error(error);
-        } 
-      
+        }
+
     }
 
     function onDeleteModalConfirmed() {
         const itemIdToDelete = itemId.current;
-    
+
         if (itemIdToDelete) {
             deleteItem(itemIdToDelete.id);
         }
@@ -92,33 +92,33 @@ function InventoryListItem( {item} ) {
                 </div>
             </div>
             <div className="inventory-item__buttons-container">
-        <button
-          className="inventory-item__button"
-          onClick={() => showDeleteModal(item)}
-        >
-          <DeleteIcon
-            className="inventory-item__delete-icon"
-            alt="A red trash can on a white background"
-          />
-        </button>
-        <Link to={`/inventories/edit-inventory-item/${id}`}>
-          <button className="inventory-item__button">
-            <EditIcon
-              className="inventory-item__edit-icon"
-              alt="A blue pencil on a white background"
+                <button
+                    className="inventory-item__button"
+                    onClick={() => showDeleteModal(item)}
+                >
+                    <DeleteIcon
+                        className="inventory-item__delete-icon"
+                        alt="A red trash can on a white background"
+                    />
+                </button>
+                <Link to={`/edit-inventory-item/${id}`}>
+                    <button className="inventory-item__button">
+                        <EditIcon
+                            className="inventory-item__edit-icon"
+                            alt="A blue pencil on a white background"
+                        />
+                    </button>
+                </Link>
+            </div >
+            {backdrop}
+            < DeleteInventoryItem
+                name={itemId.current.item_name}
+                isOpen={shouldShowDeleteModal}
+                onCancel={onDeleteModalCancel}
+                onConfirmed={onDeleteModalConfirmed}
             />
-          </button>
-        </Link>
-      </div>
-      {backdrop}
-      <DeleteInventoryItem
-        name={itemId.current.item_name}
-        isOpen={shouldShowDeleteModal}
-        onCancel={onDeleteModalCancel}
-        onConfirmed={onDeleteModalConfirmed}
-      />
-    </div>
-  );
+        </div >
+    );
 }
 
 export default InventoryListItem;

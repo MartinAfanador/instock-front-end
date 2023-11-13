@@ -3,13 +3,19 @@ import { ReactComponent as DeleteIcon} from './../../images/delete_black_24dp.sv
 import { ReactComponent as EditIcon}  from './../../images/edit_black_24dp.svg';
 import { ReactComponent as ChevronIcon}  from './../../images/chevron_right_black_24dp.svg';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import DeleteInventoryItem from '../../pages/DeleteInventoryItem/DeleteInventoryItem';
 
 function InventoryListItem( {item} ) {
 
+    const navigate = useNavigate();
+
     const [shouldShowDeleteModal, setShouldShowDeleteModal] = useState(false);
+    const [searchData, setSearchData] = useState([]);
+    const [data, setData] = useState([]);
+    const [mobView, setMobView] = useState(window.innerWidth < 768);
 
     const itemId = useRef({});
 
@@ -22,7 +28,7 @@ function InventoryListItem( {item} ) {
 
     function showDeleteModal(item) {
         itemId.current = item;
-        console.log("item,", item);
+       
         setShouldShowDeleteModal(true);
     }
 
@@ -30,21 +36,22 @@ function InventoryListItem( {item} ) {
         setShouldShowDeleteModal(false);
     }
 
-    async function deleteItem(itemIdToDelete) {
+    async function deleteItem(itemIdToDeleteId) {
         try {
-            await axios.delete(`http://localhost:8080/api/inventory/${itemIdToDelete}`);
-            const filteredData = searchData.filter(item => item.id !== itemIdToDelete);
-            setSearchData(filteredData);
-            setData(filteredData);
+            setShouldShowDeleteModal(false);
+            const response = await axios.delete(`http://localhost:8080/api/inventories/${itemIdToDeleteId}`);
+          
+            alert('Item deleted');
+       
         } catch (error) {
             console.error(error);
-        } finally {
-            setShouldShowDeleteModal(false);
-        }
+        } 
+      
     }
 
     function onDeleteModalConfirmed() {
         const itemIdToDelete = itemId.current;
+    
         if (itemIdToDelete) {
             deleteItem(itemIdToDelete.id);
         }
@@ -103,7 +110,7 @@ function InventoryListItem( {item} ) {
         </Link>
       </div>
       {backdrop}
-      <DeleteWarehouse
+      <DeleteInventoryItem
         name={itemId.current.item_name}
         isOpen={shouldShowDeleteModal}
         onCancel={onDeleteModalCancel}

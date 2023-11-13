@@ -98,7 +98,7 @@ function AddWarehouse() {
       } else {
         console.error('Error:', error.message);
       }
-      console.log(handleSubmit);
+      // console.log(handleSubmit);
     }
   };
   return (

@@ -101,7 +101,7 @@ function InventoryListItem( {item} ) {
             alt="A red trash can on a white background"
           />
         </button>
-        <Link to={`/edit-inventory-item/${id}`}>
+        <Link to={`/inventories/edit-inventory-item/${id}`}>
           <button className="inventory-item__button">
             <EditIcon
               className="inventory-item__edit-icon"

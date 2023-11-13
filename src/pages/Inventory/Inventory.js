@@ -36,7 +36,7 @@ function Inventory() {
                             <input className='inventories__input-field' type='text' placeholder='Search...' name='search' />
                             <SearchIcon className='inventories__search-icon' />
                         </div>
-                        <Link to={`/add-inventory-item`}><button className='inventories__add-button'>+ Add New Item</button></Link>
+                        <Link to={`/inventories/add-inventory-item`}><button className='inventories__add-button'>+ Add New Item</button></Link>
                     </div>
                 </div>
                 <div className='inventories__inventory-list'>

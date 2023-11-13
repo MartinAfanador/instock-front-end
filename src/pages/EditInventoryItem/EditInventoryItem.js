@@ -75,7 +75,7 @@ function EditInventoryItem() {
     }
 
     const handleCancel = () => {
-        navigate('/inventory');
+        navigate('/inventories');
     }
 
     const handleSubmit = async (event) => {
@@ -109,11 +109,9 @@ function EditInventoryItem() {
                 quantity: Number(itemQuantity)
             }
 
-            console.log(newEntry);
-
             const response = await axios.put(`http://localhost:8080/api/inventories/${id}`, newEntry);
             alert('The item has been successfully updated!');
-            navigate('/inventory');
+            navigate('/inventories');
         } catch (error) {
             console.error();
         }
@@ -148,7 +146,7 @@ function EditInventoryItem() {
         <main>
             <div className='edit-inventory'>
                 <div className='edit-inventory__heading-container'>
-                    <Link to='/inventory'><BackIcon className='edit-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
+                    <Link to='/inventories'><BackIcon className='edit-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
                     <h1 className='edit-inventory__heading'>Edit Inventory Item</h1>
                 </div>
                 <form className='edit-inventory__form'>

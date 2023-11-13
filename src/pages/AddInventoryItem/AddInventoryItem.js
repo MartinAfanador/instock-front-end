@@ -68,7 +68,7 @@ function AddInventoryItem() {
     }
 
     const handleCancel = () => {
-        navigate('/inventory');
+        navigate('/inventories');
     }
 
     const handleSubmit = async (event) => {
@@ -104,7 +104,7 @@ function AddInventoryItem() {
 
             const response = await axios.post('http://localhost:8080/api/inventories', newEntry);
             alert('The item has been successfully added!');
-            navigate('/inventory');
+            navigate('/inventories');
         } catch (error) {
             console.error();
         }
@@ -130,7 +130,7 @@ function AddInventoryItem() {
         <main>
             <div className='add-inventory'>
                 <div className='add-inventory__heading-container'>
-                    <Link to='/inventory'><BackIcon className='add-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
+                    <Link to='/inventories'><BackIcon className='add-inventory__back-icon' alt='A blue back arrow on a white background' /></Link>
                     <h1 className='add-inventory__heading'>Add New Inventory Item</h1>
                 </div>
                 <form className='add-inventory__form'>

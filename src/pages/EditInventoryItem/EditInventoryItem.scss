@@ -282,6 +282,7 @@ main {
         background-color: $white;
         border: .0625rem solid $slate;
         color: $slate;
+        cursor: grab;
 
         @include tablet {
             @include desk-h3;
@@ -297,6 +298,7 @@ main {
         background-color: $indigo;
         color: $white;
         border: none;
+        cursor: grab;
 
         &:hover {
             background-color: $graphite;

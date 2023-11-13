@@ -3,13 +3,15 @@ import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ReactComponent as ErrorIcon } from '../../images/error_black_24dp.svg';
+
 
 function EditWarehouse() {
     const { id } = useParams();
     const nav = useNavigate();
     const backendApiURL = 'http://localhost:8081';
     const navigate = useNavigate();
-
+    const [firstRender, setFirstRender] = useState(true);
     const [warehouseName, setWarehouseName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -18,7 +20,17 @@ function EditWarehouse() {
     const [position, setPosition] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
+    const errorMessage = "This field is required";
 
+
+    const validatePhoneNumber = (number) => {
+        const validFormat = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+        return validFormat.test(number);
+    }
+    const validateEmail = (email) => {
+        const validFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return validFormat.test(email);
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -75,8 +87,18 @@ function EditWarehouse() {
     const handleUpload = (e) => {
         e.preventDefault();
 
+setFirstRender(false);
+        
         if (!warehouseName || !address || !city || !country || !contact || !phoneNumber || !email || !position) {
-            alert('All fields are required!')
+            return;
+        }
+
+        if (!validatePhoneNumber(phoneNumber)) {
+            alert('Please enter a valid phone number');
+            return;
+        }
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email');
             return;
         }
 
@@ -88,7 +110,7 @@ function EditWarehouse() {
             contact_name: contact,
             contact_position: position,
             contact_phone: phoneNumber,
-            contact_email : email
+            contact_email: email
         }
 
         async function edit() {
@@ -133,6 +155,16 @@ function EditWarehouse() {
                                         onChange={changeWarehouseName}
                                         value={warehouseName}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${warehouseName ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="streetAddress">
                                     Street Address
@@ -145,6 +177,16 @@ function EditWarehouse() {
                                         onChange={changeAddress}
                                         value={address}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${address ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="city">
                                     City
@@ -157,6 +199,16 @@ function EditWarehouse() {
                                         onChange={changeCity}
                                         value={city}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${city ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="country">
                                     Country
@@ -169,6 +221,16 @@ function EditWarehouse() {
                                         onChange={changeCountry}
                                         value={country}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${country ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                             </div>
                             <div className="edit-warehouse__form-two">
@@ -184,6 +246,16 @@ function EditWarehouse() {
                                         onChange={changeContact}
                                         value={contact}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${contact ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="position">
                                     Position
@@ -196,6 +268,16 @@ function EditWarehouse() {
                                         onChange={changePosition}
                                         value={position}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${position ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="phoneNumber">
                                     Phone Number
@@ -208,6 +290,16 @@ function EditWarehouse() {
                                         onChange={changeNumber}
                                         value={phoneNumber}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${phoneNumber ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                                 <label className="edit-warehouse__labels" for="email">
                                     Email
@@ -220,6 +312,16 @@ function EditWarehouse() {
                                         onChange={changeEmail}
                                         value={email}
                                     />
+                                    <div
+                                        className={`${firstRender ? "first-render" : "default-render"} ${email ? "default" : "error-message"
+                                            }`}
+                                    >
+                                        <ErrorIcon
+                                            className="edit-warehouse__error-icon"
+                                            alt="white exclamation point on a red background"
+                                        />
+                                        <span>{`${errorMessage}`}</span>
+                                    </div>
                                 </label>
                             </div>
                         </section>

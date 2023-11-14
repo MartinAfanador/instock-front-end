@@ -25,17 +25,11 @@ function WarehouseDetails() {
 
     const itemId = useRef({});
 
-    // console.log("WarehouseDetails ", id);
-
     useEffect(() => {
         async function fetchData() {
-            console.log(`${backendApiURL}/api/warehouses/${id}`);
             try {
-                console.log(`${backendApiURL}/api/warehouses/${id}`);
                 const response = await axios.get(`${backendApiURL}/api/warehouses/${id}`);
-                console.log(response.data);
                 const responseInventories = await axios.get(`http://localhost:8086/api/warehouses/${id}/inventories`);
-                console.log("responseInventories ", responseInventories.data);
                 setItemDetails(response.data);
                 setInventories(responseInventories.data);
             } catch (error) {
@@ -60,9 +54,7 @@ function WarehouseDetails() {
         try {
             setShouldShowDeleteModal(false);
             const response = await axios.delete(`http://localhost:8086/api/inventories/${itemIdToDeleteId}`);
-            console.log("response", response);
             const filteredData = inventories.filter(item => item.id !== itemIdToDeleteId);
-            console.log(filteredData);
             setInventories(filteredData);
             alert('Item deleted');
         } catch (error) {

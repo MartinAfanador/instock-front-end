@@ -1,5 +1,4 @@
 import "./AddWarehouse.scss";
-// import arrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';

@@ -17,8 +17,6 @@ function Wlist() {
     const [mobView, setMobView] = useState(window.innerWidth < 768);
     const navigate = useNavigate();
 
-
-    console.log("wlist");
     const itemId = useRef({});
 
 

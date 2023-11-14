@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 function WarehouseInventoryListItem({ item, onDeleteClick }) {
 
-    // console.log("item", item);
     const id = item.id;
     const itemName = item.item_name;
     const category = item.category;
@@ -23,7 +22,7 @@ function WarehouseInventoryListItem({ item, onDeleteClick }) {
                 <div className="inventor__warehouse-item__details-subcontainer inventory__warehouse-item__left-subcontainer">
                     <div className="inventory__warehouse-item__item-container">
                         <span className="inventory__warehouse-item__label">INVENTORY ITEM</span>
-                        <Link to={`/inventory/${id}`}><span className="inventory__warehouse-item__text inventory__warehouse-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' /></span></Link>
+                        <Link to={`/inventories/inventory/${id}`}><span className="inventory__warehouse-item__text inventory__warehouse-item__item-link">{itemName}<ChevronIcon className='inventory-item__chevron-icon' alt='A blue chevron sign a white background' /></span></Link>
                     </div>
                     <div className="inventory__warehouse-item__category-container">
                         <span className="inventory__warehouse-item__label">CATEGORY</span>
@@ -39,10 +38,7 @@ function WarehouseInventoryListItem({ item, onDeleteClick }) {
                         <span className="inventory__warehouse-item__label">QUANTITY</span>
                         <span className="inventory__warehouse-item__text">{quantity}</span>
                     </div>
-                    {/* <div className="inventory-item__warehouse-container">
-                        <span className="inventory-item__label">WAREHOUSE</span>
-                        <span className="inventory-item__text">{warehouse}</span>
-                    </div> */}
+                    
                 </div>
             </div>
             <div className="inventory__warehouse-item__buttons-container">

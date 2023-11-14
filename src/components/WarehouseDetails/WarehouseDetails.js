@@ -44,11 +44,6 @@ function WarehouseDetails() {
         }
         fetchData();
     }, []);
-    // const itemName = item.item_name;
-    // const category = item.category;
-    // const quantity = itemDetails.quantity;
-    // const warehouse = item.warehouse_name;
-    // let statusText = item.status;
 
 
     function showDeleteModal(item) {
@@ -95,10 +90,7 @@ function WarehouseDetails() {
 
     const isInStock = itemDetails.quantity > 0;
     const statusText = isInStock ? 'IN STOCK' : 'OUT OF STOCK';
-    // let content = (<div>No inventories</div>);
-    // if (inventories) {
-    //     content = (<div>{inventories.length} inventories</div>)
-    // }
+    
 
     return (
         <div className='container_wh'>
@@ -133,9 +125,6 @@ function WarehouseDetails() {
                                 <div className='item_wh__label ='>
                                     CONTACT NAME:
                                     <div className='item__description'>{itemDetails.contact_name}</div>
-                                    {/* <span className={`item__text ${isInStock ? 'item__in-stock' : 'item__out-of-stock'}`}>
-                                        {itemDetails}
-                                    </span> */}
                                     <div className='item__description'>
                                         {itemDetails.contact_position}
                                     </div>

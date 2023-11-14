@@ -11,20 +11,13 @@ function Home() {
 
     return (
         <div className='home__background'>
-            <header>
-
-            </header>
+            
             <main>
                 <section>
-                    <div >
                         <Wlist />
-                    </div>
                 </section>
             </main>
-            <footer>
-
-
-            </footer>
+        
         </div>
     );
 }

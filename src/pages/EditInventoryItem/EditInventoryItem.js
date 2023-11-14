@@ -45,9 +45,10 @@ function EditInventoryItem() {
     }
 
     const changeStatus = (event) => {
-        setItemStatus(event.target.value);
-
-        if (itemStatus === 'Out of Stock') {
+        const newStatus = event.target.value;
+        setItemStatus(newStatus);
+    
+        if (newStatus === 'Out of Stock') {
             setItemQuantity(0);
         }
     }
@@ -98,6 +99,10 @@ function EditInventoryItem() {
             return;
         }
 
+        if (itemStatus === 'Out of Stock') {
+            setItemQuantity(0);
+        }
+
         try {
 
             const newEntry = {
@@ -106,10 +111,10 @@ function EditInventoryItem() {
                 description: itemDescription,
                 category: selectedCategory,
                 status: itemStatus,
-                quantity: Number(itemQuantity)
+                quantity: itemQuantity
             }
 
-            const response = await axios.put(`http://localhost:8080/api/inventories/${id}`, newEntry);
+            const response = await axios.put(`http://localhost:8086/api/inventories/${id}`, newEntry);
             alert('The item has been successfully updated!');
             navigate('/inventories');
         } catch (error) {
@@ -266,7 +271,7 @@ function EditInventoryItem() {
                                     id='quantity'
                                     name='quantity'
                                     placeholder='Item Quantity'
-                                    value={itemQuantity}
+                                    value={(itemStatus === 'Out of Stock') ? 0 : itemQuantity}
                                     onChange={changeQuantity} />
                                 <div className={`${((itemStatus && itemQuantity != 0) || firstRender) ? 'hide' : 'edit-inventory__error-container'}`}>
                                     <ErrorIcon

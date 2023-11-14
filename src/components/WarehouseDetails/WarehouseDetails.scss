@@ -12,6 +12,14 @@
     top: -2rem;
     background-color: white;
 
+    @include desktop {
+
+        width: 90%;
+        top: -4.5rem;
+
+
+    }
+
 
 }
 
@@ -126,13 +134,17 @@
     }
 
     &__label {
-        font-weight: 700;
+        @include mob-h3;
         color: $slate;
         margin-bottom: .5rem;
         display: flex;
         flex-direction: column;
-        // width: 100%;
-        // margin-left: 1rem;
+
+        @include desktop {
+
+            @include desk-h3
+        }
+        
     }
 
     &__description {
@@ -140,19 +152,7 @@
         margin-bottom: .5rem;
     }
 
-    // &__in-stock {
-    //     background: rgba(21, 161, 107, 0.07);
-    //     border-radius: 20px;
-    //     width: fit-content;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     height: 24px;
-    //     padding: .75rem;
-    //     color: $green;
-    //     font-weight: 600;
 
-    // }
 
     &__logo {
         width: 2.25rem;
@@ -225,6 +225,11 @@
             width: 50%;
             padding-right: 3rem;
             padding-left: 1rem;
+        }
+
+        @include desktop {
+
+            padding-left: 4rem;
         }
     }
 

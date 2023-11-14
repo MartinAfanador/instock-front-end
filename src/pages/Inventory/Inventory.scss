@@ -31,7 +31,7 @@ main {
         flex-direction: column;
         padding: 2rem;
         padding-bottom: 1.5rem;
-        border: .0625rem solid $cloud;
+        border-bottom: .0625rem solid $cloud;
 
         @include tablet {
             display: flex;

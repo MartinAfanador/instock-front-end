@@ -1,7 +1,7 @@
 import "./AddWarehouse.scss";
 // import arrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as BackArrow } from '../../images/arrow_back_black_24dp.svg';
 import { ReactComponent as ErrorIcon } from '../../images/error_black_24dp.svg';
 import axios from 'axios';
@@ -85,7 +85,7 @@ function AddWarehouse() {
         contact_email: email
       }
 
-      const response = await axios.post('http://localhost:8080/api/warehouses', newEntry);
+      const response = await axios.post('http://localhost:8086/api/warehouses', newEntry);
 
       alert('Warehouse added!')
       navigate('/');
@@ -103,7 +103,7 @@ function AddWarehouse() {
   return (
     <section>
       <div className="warehouse__title">
-      <BackArrow className='warehouse__title-icon' alt='A blue arrow on a white background' />
+      <Link to={'/warehouses'}><BackArrow className='warehouse__title-icon' alt='A blue arrow on a white background' /></Link>
         <h1 className="warehouse__title-text">Add New Warehouse</h1>
       </div>
       <div className="warehouse">
@@ -284,7 +284,7 @@ function AddWarehouse() {
         </form>
       </div>
       <section className="btn">
-        <button className="btn__white">cancel</button>
+        <Link to='/warehouses'><button className="btn__white">cancel</button></Link>
         <button className="btn__indigo" onClick={handleSubmit}>
           {" "}
           + Add Warehouse

@@ -9,7 +9,7 @@ import { ReactComponent as ErrorIcon } from '../../images/error_black_24dp.svg';
 function EditWarehouse() {
     const { id } = useParams();
     const nav = useNavigate();
-    const backendApiURL = 'http://localhost:8081';
+    const backendApiURL = 'http://localhost:8086';
     const navigate = useNavigate();
     const [firstRender, setFirstRender] = useState(true);
     const [warehouseName, setWarehouseName] = useState('');

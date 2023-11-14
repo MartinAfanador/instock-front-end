@@ -3,13 +3,6 @@
 @use '../../partials/typography' as *;
 @use '../../partials/variables' as *;
 
-// html,
-// body,
-// #app,
-// #root,
-// #app>div {
-//     height: 100%;
-// }
 
 .warehouse__list {
     background-color: $white;
@@ -17,7 +10,7 @@
 
 
     &__header {
-        width: 80%;
+    
         margin: auto;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
         border-radius: 6px;
@@ -25,6 +18,10 @@
         top: -1rem;
         background-color: white;
 
+        @include desktop {
+
+            
+        }
 
 
 
@@ -257,6 +254,13 @@
         position: relative;
         top: -2rem;
         background-color: white;
+
+
+        @include desktop {
+
+            width: 100%;
+            top: -4.5rem;
+        }
     }
 
 

@@ -20,7 +20,7 @@ function AddWarehouse() {
   const errorMessage = "This field is required";
 
   const validatePhoneNumber = (number) => {
-    const validFormat = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+    const validFormat = /^(\+1)?(\d{1,4})?[- ]?\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
     return validFormat.test(number);
   }
 

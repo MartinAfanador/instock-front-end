@@ -28,7 +28,7 @@ function AddWarehouse() {
     const validFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     return validFormat.test(email);
   }
-  
+
   const handleWarehouseName = (event) => {
     setWarehouseName(event.target.value);
   };
@@ -53,9 +53,9 @@ function AddWarehouse() {
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
-  
+
   const handleSubmit = async () => {
-    
+
     setFirstRender(false);
 
     if (!warehouseName || !address || !city || !country || !contact || !position || !phoneNumber || !email) {
@@ -88,7 +88,7 @@ function AddWarehouse() {
 
       alert('Warehouse added!')
       navigate('/');
-     
+
     } catch (error) {
       if (error.response) {
         console.error('Error from the server:', error.response.data);
@@ -100,196 +100,189 @@ function AddWarehouse() {
     }
   };
   return (
-    <section>
-      <div className="warehouse__title">
-      <Link to={'/warehouses'}><BackArrow className='warehouse__title-icon' alt='A blue arrow on a white background' /></Link>
-        <h1 className="warehouse__title-text">Add New Warehouse</h1>
-      </div>
-      <div className="warehouse">
-        <form className="warehouse__form1">
-          <h3 className="warehouse__h3">Warehouse Details</h3>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Warehouse Name
-            <input
-              className="warehouse__inputs"
-              onChange={handleWarehouseName}
-              name="warehouseName"
-              type="text"
-              id="Warehouse Name"
-              placeholder="Warehouse Name"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                warehouseName ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+    <main>
+      <section className="add-warehouse-container">
+        <div className="warehouse__title">
+          <Link to={'/warehouses'}><BackArrow className='warehouse__title-icon' alt='A blue arrow on a white background' /></Link>
+          <h1 className="warehouse__title-text">Add New Warehouse</h1>
+        </div>
+        <div className="warehouse">
+          <form className="warehouse__form1">
+            <h3 className="warehouse__h3">Warehouse Details</h3>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Warehouse Name
+              <input
+                className="warehouse__inputs"
+                onChange={handleWarehouseName}
+                name="warehouseName"
+                type="text"
+                id="Warehouse Name"
+                placeholder="Warehouse Name"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Street Address
-            <input
-              className="warehouse__inputs"
-              onChange={handleAddress}
-              type="text"
-              id="Street Address"
-              placeholder="Street Address"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                address ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${warehouseName ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Street Address
+              <input
+                className="warehouse__inputs"
+                onChange={handleAddress}
+                type="text"
+                id="Street Address"
+                placeholder="Street Address"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            City
-            <input
-              className="warehouse__inputs"
-              onChange={handleCity}
-              type="text"
-              id="City"
-              placeholder="City"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                city ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${address ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              City
+              <input
+                className="warehouse__inputs"
+                onChange={handleCity}
+                type="text"
+                id="City"
+                placeholder="City"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Country
-            <input
-              className="warehouse__inputs"
-              onChange={handleCountry}
-              type="text"
-              id="Country"
-              placeholder="Country"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                country ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${city ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Country
+              <input
+                className="warehouse__inputs"
+                onChange={handleCountry}
+                type="text"
+                id="Country"
+                placeholder="Country"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-        </form>
-        <form className="warehouse__form2">
-          <h3 className="warehouse__h3">Contact Details</h3>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Contact Name
-            <input
-              className="warehouse__inputs"
-              onChange={handleName}
-              type="text"
-              id="Contact Name"
-              placeholder="Contact Name"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                contact ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${country ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+          </form>
+          <form className="warehouse__form2">
+            <h3 className="warehouse__h3">Contact Details</h3>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Contact Name
+              <input
+                className="warehouse__inputs"
+                onChange={handleName}
+                type="text"
+                id="Contact Name"
+                placeholder="Contact Name"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Position
-            <input
-              className="warehouse__inputs"
-              onChange={handlePosition}
-              type="text"
-              id="Position"
-              placeholder="Position"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                position ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${contact ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Position
+              <input
+                className="warehouse__inputs"
+                onChange={handlePosition}
+                type="text"
+                id="Position"
+                placeholder="Position"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Phone Number
-            <input
-              className="warehouse__inputs"
-              onChange={handleNumber}
-              type="text"
-              id="Phone Number"
-              placeholder="Phone Number"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                phoneNumber ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${position ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Phone Number
+              <input
+                className="warehouse__inputs"
+                onChange={handleNumber}
+                type="text"
+                id="Phone Number"
+                placeholder="Phone Number"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-          <label className="warehouse__labels" htmlFor="myinput">
-            Email
-            <input
-              className="warehouse__inputs"
-              onChange={handleEmail}
-              type="text"
-              id="Email"
-              placeholder="Email"
-            />
-            <div
-              className={`${firstRender ? "first-render" : "default-render"} ${
-                email ? "default" : "error-message"
-              }`}
-            >
-              <ErrorIcon
-                className="warehouse__error-icon"
-                alt="white exclamation point on a red background"
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${phoneNumber ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+            <label className="warehouse__labels" htmlFor="myinput">
+              Email
+              <input
+                className="warehouse__inputs"
+                onChange={handleEmail}
+                type="text"
+                id="Email"
+                placeholder="Email"
               />
-              <span>{`${errorMessage}`}</span>
-            </div>
-          </label>
-        </form>
-      </div>
-      <section className="btn">
-        <Link to='/warehouses'><button className="btn__white">cancel</button></Link>
-        <button className="btn__indigo" onClick={handleSubmit}>
-          {" "}
-          + Add Warehouse
-        </button>
+              <div
+                className={`${firstRender ? "first-render" : "default-render"} ${email ? "default" : "error-message"
+                  }`}
+              >
+                <ErrorIcon
+                  className="warehouse__error-icon"
+                  alt="white exclamation point on a red background"
+                />
+                <span>{`${errorMessage}`}</span>
+              </div>
+            </label>
+          </form>
+        </div>
+        <section className="btn">
+          <Link className="btn__white" to='/warehouses'><button className="btn__white" >cancel</button></Link>
+          <button className="btn__indigo" onClick={handleSubmit}>
+            + Add Warehouse
+          </button>
+        </section>
       </section>
-    </section>
+    </main>
   );
 }
 export default AddWarehouse;
